@@ -1,0 +1,1411 @@
+/**
+ * Author: zhangfs by Atom
+ * Date: 2018/03/22 10:20
+ */
+@charset "utf-8";
+* {
+    margin:0;
+    padding: 0;
+}
+/*
+ios字体： Heiti SC,Helvetica,HelveticaNeue
+android字体： 默认中文字体是Droidsansfallback 默认英文和数字字体是Droid Sans
+winphone字体：默认中文字体是Dengxian(方正等线体)  默认英文和数字字体是Segoe
+*/
+body {
+    width: 100%;
+    background: #f5f5f5;
+    font-family:AvantiBold,'微软雅黑', SimHei,'Helvetica Neue',Arial,'Droid Sans',sans-serif;
+    /*visibility: hidden;*/
+}
+
+/* 禁用iPhone中Safari的字号自动调整 */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+/* 去除iPhone中默认的input样式 */
+input[type="submit"], input[type="reset"], input[type="button"], input{
+    resize: none;
+}
+input {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+/* 取消链接高亮 并初始化 */
+div,ul,li,ol,h1,h2,h3,h4,h5,h6,input,textarea,select,p,dl,dt,dd,a,img,button,form,table,th,tr,td,tbody,article,
+aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section{
+    -webkit-tap-highlight-color: transparent;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+/* 设置HTML5元素为块 */
+article, aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section {
+    display: block;
+}
+/* 图片自适应 */
+img {
+    border: none;
+    height: auto;
+    border: none;
+    max-width: 100%;
+    height: auto; width:auto\9; /* ie8 */
+    -ms-interpolation-mode: bicubic; /*为了照顾ie图片缩放失真*/
+}
+/* 当图片url为空时，设置不显示 */
+img[src=''] {
+    opacity: 0;
+}
+em,i {
+    font-style:normal;
+}
+ul,ol {
+    list-style:none;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family:"微软雅黑";
+}
+a {
+    text-decoration:none;
+    color:#969696;
+    font-family:AvantiBold,SimHei,'Helvetica Neue',Arial,'Droid Sans',sans-serif;
+}
+a:hover {
+    text-decoration:none;
+}
+.fontRed {
+  color: red !important;
+}
+/*
+  隐藏滚动条样式但又可以滚动区
+*/
+::-webkit-scrollbar{
+    display:none;
+}
+
+/**
+ * Author: zhangfs
+ * Time: 2018/03/22 14:03
+ * Func: 基础公用样式
+ */
+.box {
+   width: 10rem;
+   background: #f5f5f5;
+   overflow-y: scroll;
+   padding: 1rem 0;
+   box-sizing: border-box;
+}
+
+section, .section-box {
+    width: 10rem;
+    background: #F2F3F5;
+}
+
+.wrap {
+    width: 9.47rem;
+    height: auto;
+    background: #FFFFFF;
+    box-shadow: 0 0.05rem 0.11rem 0 #D5D9DD;
+    border-radius: 0.21rem;
+    margin: 0.59rem auto 0;
+    position: relative;
+    padding-bottom: .23rem;
+}
+
+.cont-title, .cont-title-english {
+    position: relative;
+    width: 100%;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    margin: 0.27rem auto 0;
+    padding-top: .23rem;
+    text-align: center;
+    font-size: 0.35rem;
+    color: #425C72;
+    letter-spacing: 0;
+    font-weight: bold;
+}
+.cont-title-english {
+    height: .9rem;
+    font-size: 0.48rem;
+}
+
+.section-box .clearTopGap, section .clearTopGap {
+    margin-top: 0 !important;
+}
+.section-box .smallTopGap, section .smallTopGap {
+    margin-top: 0.2rem !important;
+}
+
+.sub-title {   /* E.g.: kpi 城市详情用 */
+    position: absolute;
+    right: 0.3rem;
+    top: 0.23rem;
+    font-size: .267rem;
+    font-weight: initial;
+}
+
+.fullscreen-box {
+    width: 100%;
+    height: 100%;
+    background: #f5f5f5;
+}
+.fullscreen-box .section-box {
+    height: 100%;
+}
+.fullscreen-box .section-box .wrap {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding-top: 1rem;
+    box-sizing: border-box;
+}
+.fullscreen-box .section-box .wrap .echarts{
+    height: 100%;
+    padding-bottom: 0;
+}
+.fullscreen-box .section-box .wrap div {
+    width: 100%;
+    height: 100%;
+}
+
+
+/**
+ * Create: zhangfs by Atom
+ * Time: 2018/07/23
+ * Func： 挂钩
+ */
+.hook, .hook::after {
+    position: absolute;
+    top: -0.45rem;
+    left: 1.2rem;
+    width: 15px;
+    height: .667rem;
+    background-image: linear-gradient(-180deg, #e0d9d9 0%, #fdfdfd 48%, #d4cece 100%);
+    box-shadow: 0 0 0.2rem 0 rgba(181, 174, 174, 0.5);
+}
+.hook::after {
+    content: '';
+    top: initial;
+    left: calc(100vw - 3.05rem);
+}
+
+/**
+ * Author: zhangfs
+ * Time: 2018/03/23 14:03
+ * Func： 导航栏
+ */
+.header {
+    width: 10rem;
+    height: 1rem;
+    background-image: linear-gradient(-180deg, #4C555E 0%, #252A30 80%);
+    box-shadow: 0 0.05rem 0.13rem 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 220;
+}
+
+.slideBtn {
+    width: 0.53rem;
+    height: 0.43rem;
+    background: url(../images/icon_menu.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+    margin-left: 0.27rem;
+    margin-top: 0.32rem;
+}
+
+.logo {
+    width: 1.39rem;
+    height: 80%;
+    background: url(../images/logo_bar.png) no-repeat;
+    -webkit-background-size: auto 100%;
+    background-size: auto 100%;
+    margin: 0.07rem 0 0 3.63rem;
+}
+
+.location {
+    width: 1.9rem;
+    height: 0.48rem;
+    margin: 0.29rem 0 0 2rem;
+    display: flex;
+}
+
+.showCity {
+    width: 1.4rem;
+    height: 0.48rem;
+    font-size: 0.35rem;
+    color: #ABB7C1;
+    letter-spacing: 0;
+}
+
+.showCity input {
+    color: #ABB7C1;
+    background: transparent;
+    text-align: right;
+    width: 1.4rem;
+    line-height: 0.48rem;
+    height: 0.48rem;
+}
+
+.showCityIcon {
+    width: 0.27rem;
+    height: 0.35rem;
+    margin: 0.07rem 0 0 0.1rem;
+    background: url(../images/icon_location.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+
+
+/**
+ * Author: zhangfs
+ * Time: 2018/03/24 12:11
+ * Func： 五行表格基础列表样式
+ */
+.headLine, .headLine-four {
+    display: flex;
+    width: 100%;
+    height: 0.53rem;
+    font-size: 0.35rem;
+    color: #365873;
+    letter-spacing: 0;
+    border-bottom: 0.03rem solid #EAEFF3;
+    margin: 0 auto;
+    padding: 0 1%;
+    box-sizing: border-box;
+}
+
+.headLine p {
+    width: 20%;
+    height: 0.53rem;
+    line-height: 0.53rem;
+    text-align: center;
+}
+
+.headLine .itemVal, .headLine-four .itemVal {
+    width: 9.07rem;
+    height: 5.07rem;
+    margin: 0 auto;
+}
+
+.itemVal {
+    padding: .2rem 1%;
+}
+
+.itemVal li {
+    width: 100%;
+    height: 0.53rem;
+    line-height: 0.53rem;
+    display: flex;
+}
+
+.itemVal li:nth-child(odd) {
+    background: #eefeee;
+}
+.itemVal li:nth-child(even) {
+    background: #ffffff;
+}
+/*.itemVal li:hover, .scroll-val li:hover {
+    background: #97f79e !important;
+    animation: scaleActive .5s ease;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes scaleActive {
+    100% {
+      transform: scaleY(1.3);
+    }
+}*/
+
+
+.itemVal li p {
+    width: 20%;
+    height: 0.53rem;
+    text-align: center;
+    font-size: 0.27rem;
+    color: #425C72;
+    letter-spacing: 0;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.itemVal li p span {
+    white-space: nowrap;
+    float: left;
+    text-align: left;
+}
+
+
+
+/**
+ * Author: zhangfs
+ * Time: 2018/03/25 09:11
+ * Func： 标题右边带小三角条件选择器
+ */
+.simpleSelection {
+    position: absolute;
+    top: 0.2rem;
+    right: 0.5rem;
+    width: 1.5rem;
+}
+.simpleSelection .toggleIcon {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 0px;
+    height: 0px;
+    border: solid .1rem transparent;
+    border-top: solid .1rem #0DB95F;
+}
+.simpleSelection input {
+    position: relative;
+    width: 60%;
+    text-align: right;
+    font-size: .27rem;
+    color: #0DB95F;
+    background: rgba(0,0,0,0);
+}
+
+
+
+/**
+ * Author: zhangfs
+ * Time: 2018/03/26 09:35
+ * Func: 车类型选择器
+ */
+.carType-box {
+    height: 0.587rem;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.27rem;
+    position: relative;
+    font-size: 0.32rem;
+    color: #333;
+    line-height: 0.587rem;
+}
+
+.car-type {
+    background: #F2F3F5;
+    border-radius: 0.11rem;
+    width: 1.17rem;
+    height: 0.53rem;
+    font-size: 0.29rem;
+    line-height: 0.53rem;
+    color: #ABB7C1;
+    letter-spacing: 0;
+    text-align: center;
+    margin-right: 0.48rem;
+}
+.car-type:last-child {
+    margin-right: 0;
+}
+
+.carType-box .active {
+    color: #0DB95F;
+    background: #DBF7E8;
+}
+
+
+
+/**
+ * Author: zhangfs
+ * Date: 2018/03/26 09:35
+ * Func: 单日期选择器
+ */
+.singleDatePicker {
+    width: 5.87rem;
+    height: 0.8rem;
+    margin: 0 auto 0.2rem;
+    background: #F2F3F5;
+    box-shadow: inset 0 0.027rem 0.1rem 0 #D5D9DD;
+    border-radius: 2.67rem;
+    display: flex;
+}
+
+.singleDatePicker .preDateBtn {
+    height: 0.8rem;
+    line-height: 0.8rem;
+    font-size: 0.27rem;
+    color: #647888;
+    letter-spacing: 0;
+    margin-left: 0.32rem;
+}
+
+.singleDatePicker .showDate {
+    width: 2.4rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    font-size: 0.32rem;
+    color: #0DB95F;
+    letter-spacing: 0;
+    margin-left: 0.61rem;
+}
+
+.singleDatePicker .showDate .appDateTime {
+    width: 1.57rem;
+    font-size: 0.32rem;
+    color: #0DB95F;
+    letter-spacing: 0;
+    height: 0.8rem;
+    background: transparent;
+}
+
+.singleDatePicker .nextDateBtn {
+    height: 0.8rem;
+    line-height: 0.8rem;
+    font-size: 0.27rem;
+    color: #647888;
+    letter-spacing: 0;
+    margin-left: 0.61rem;
+}
+
+
+
+/**
+ * Author: zhangfs
+ * Date: 2018/04/11 14:31
+ * Func: 月份选择控件;  案例: 用户分析
+ */
+.monthPicker {
+    width: 4.5rem;
+    height: 0.8rem;
+    margin: 0 auto 0.2rem;
+    background: #F2F3F5;
+    box-shadow: inset 0 0.027rem 0.1rem 0 #D5D9DD;
+    border-radius: 2.67rem;
+    display: flex;
+}
+.monthPicker .preMonthBtn {
+    height: 0.8rem;
+    line-height: 0.8rem;
+    font-size: 0.27rem;
+    color: #647888;
+    letter-spacing: 0;
+    margin-left: 0.4rem;
+}
+.monthPicker .showMonth {
+    width: 1.2rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    font-size: 0.32rem;
+    color: #0DB95F;
+    letter-spacing: 0;
+    margin-left: 0.5rem;
+}
+.monthPicker .showMonth .appMonth {
+    width: 1.2rem;
+    font-size: 0.32rem;
+    color: #0DB95F;
+    letter-spacing: 0;
+    height: 0.8rem;
+    background: transparent;
+}
+.monthPicker .nextMonthBtn {
+    height: 0.8rem;
+    line-height: 0.8rem;
+    font-size: 0.27rem;
+    color: #647888;
+    letter-spacing: 0;
+    margin-left: 0.4rem;
+}
+
+
+
+
+/**
+ * Author: zhangfs by Atom
+ * Date: 2018/04/08 09:26
+ * Func: 选时间段日期选择器
+ */
+.doubleDatePicker {
+    width: 5.87rem;
+    height: 0.8rem;
+    margin: 0 auto 0.16rem !important;
+    background: #F2F3F5;
+    box-shadow: inset 0 0.027rem 0.1rem 0 #D5D9DD;
+    border-radius: 2.67rem;
+    display: flex;
+    line-height: 0.8rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 0.4rem;
+    font-size: 0.32rem;
+    color: #647888;
+}
+
+.doubleDatePicker .ddp-1, .doubleDatePicker .ddp-2 {
+    width: 1.57rem;
+    font-size: 0.32rem;
+    color: #0DB95F;
+    letter-spacing: 0;
+    height: 0.8rem;
+    background: transparent;
+}
+
+.doubleDatePicker .ddp-1 {
+    margin-right: 0.7rem;
+}
+
+
+
+/**
+ * Author: zhangfs by Atom
+ * Date: 2018/04/17 18:39
+ * Func: 两类一排两边圆角选择器
+ */
+.twoGroups {
+    width: 5rem;
+    height: 0.587rem;
+    margin: 0 auto;
+    padding-bottom: .2rem;
+}
+.twoGroups .set {
+    float: left;
+    width: 33.3%;
+    height: 0.587rem;
+    line-height: 0.587rem;
+    text-align: center;
+    font-size: 0.27rem;
+    color: #647888;
+    background: #F2F3F5;
+}
+.twoGroups .set:first-child {
+    border-radius: 2.67rem 0 0 2.67rem;
+}
+.twoGroups .set:last-child {
+    border-radius: 0 2.67rem 2.67rem 0;
+}
+.twoGroups .active {
+    color: #FFFFFF;
+    background: #09CA65;
+}
+
+
+
+/**
+ * Author: zhangfs
+ * Date: 2018/03/24 13:47
+ × Func： 三列一排两头圆角选择器
+ */
+.threeColumnSelection {
+    width: 5.4rem;
+    height: 0.587rem;
+    margin: 0 auto 0.2rem;
+}
+
+.threeColumnSelection .col-1, .threeColumnSelection .col-2, .threeColumnSelection .col-3  {
+    float: left;
+    width: 1.8rem;
+    height: 100%;
+    text-align: center;
+    line-height: 0.587rem;
+    font-size: 0.27rem;
+    color: #647888;
+    background: #F2F3F5;
+
+}
+
+.threeColumnSelection .col-1 {
+    border-radius: 2.67rem 0 0 2.67rem;
+}
+
+.threeColumnSelection .col-3 {
+    border-radius: 0 2.67rem 2.67rem 0;
+}
+
+.threeColumnSelection .active {
+    color: #FFFFFF;
+    background: #09CA65;
+}
+
+
+
+/**
+ * Author: zhangfs
+ * Date: 2018/03/25 14:30
+ * Func: 四列表格基础样式，依赖上方五列样式
+ */
+.headLine-four p {
+    width: 25%;
+    height: 0.53rem;
+    line-height: 0.53rem;
+    text-align: left;
+}
+
+.itemVal-four li p {
+    width: 25%;
+    text-align: left;
+    font-size: 0.27rem;
+    color: #425C72;
+    letter-spacing: 0;
+    overflow-x: scroll;
+}
+
+
+
+/**
+ * Author: zhangfs
+ * Date: 2018/03/25 16:10
+ * Func: 分页器
+ */
+.pagenation {
+    width: 2.67rem;
+    height: 0.53rem;
+    margin: 0.1rem auto 0;
+    padding-bottom: .2rem;
+    display: flex;
+    color: #425C72;
+    font-size: 0.267rem;
+}
+
+.pagenation .page-pre, .pagenation .page-next {
+    height: 100%;
+    width: 0.53rem;
+    line-height: 0.53rem;
+    text-align: center;
+    border-radius: 0.1rem;
+    background: whitesmoke;
+}
+
+.pagenation .pages {
+    width: 1.6rem;
+    text-align: center;
+    line-height: 0.53rem;
+    height: 0.53rem;
+}
+
+
+/**
+ * Author: zhangfs
+ * Date: 2018/03/30 11:45
+ * Func: 责任人及电话弹窗样式
+ */
+.responsiblePerson-box {
+    position: relative;
+    display: none;
+    justify-content: flex-end;
+    height: 0.587rem;
+    line-height: 0.587rem;
+    padding: 0.1rem .27rem 0 0;
+    font-size: .32rem;
+    color: #647888;
+    border-top: solid 0.03rem #EAEFF3;
+}
+.responsiblePerson {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.phoneBubble {
+    position: absolute;
+    top: -1rem;
+    right: .3rem;
+    height: .777rem;
+    line-height: .777rem;
+    padding: 0 .27rem;
+    color: white;
+    border-radius: .2rem;
+    opacity: .7;
+    display: none;
+    background-color: #0d900b;
+}
+.phoneBubble:before {
+    content: '';
+    position: absolute;
+    bottom: -.2rem;
+    right: .5rem;
+    width: 0px;
+    height: 0px;
+    border-top: solid .2rem #0d900b;
+    border-right: solid .15rem transparent;
+    border-left: solid .3rem transparent;
+    border-bottom: 0;
+}
+.phoneBubble a {
+    color: #ffffff;
+}
+
+
+/**
+ * Created: zhangfs by Atom
+ * Date: 2018/04/14 09:55
+ * Func: 表格信息超出屏幕左右拉动样式
+ */
+.scroll-cont {
+    width: 97%;
+    margin-left: 1%;
+    overflow-x: scroll;
+}
+.scroll-cont::-webkit-scrollbar {
+    display: none;
+}
+.scroll-cont .itemVal {
+    padding: .2rem 0;
+}
+
+
+/**
+ * Create: zhangfs by Atom
+ * Date: 2018/08/07 15:23
+ * Func: 表格两列布局实现分离式滚动表格
+ * Note1: large-fixed类与small-scroll类配套使用，需要在js动态添加值部分增加span标签
+ * Note2: 如果不想使用large-fixed类但还是想有内容滚动效果，则使用inline-scroll类, 同样要加span标签但不用small-scroll配套
+ **/
+.divided-scroll-cont {
+    display: flex;
+    overflow-x: hidden;
+    width: 97.5%;
+    margin-left: 1%;
+}
+.fixed-box {
+    flex: 0 0 auto;
+    width: 2rem;
+    margin-right: 0.1rem;
+    box-sizing: border-box;
+}
+.fixed-val li {
+    width: 2rem;
+}
+.scroll-box {
+    flex: 1 1 auto;
+    width: calc(100% - 2.1rem);
+    overflow-x: scroll;
+}
+.fixed-header, .scroll-header {
+    width: 100%;
+    height: 0.53rem;
+    line-height: 0.53rem;
+    font-size: 0.35rem;
+    color: #365873;
+    text-align: center;
+    border-bottom: 0.03rem solid #EAEFF3;
+    display: flex;
+    justify-content: center;
+}
+.fixed-val li, .scroll-val li {
+    height: .53rem;
+    line-height: .53rem;
+    text-align: center;
+    color: #425C72;
+    font-size: 0.27rem;
+    overflow-x: scroll;
+    display: flex;
+    justify-content: center;
+}
+.scroll-val li p {
+    display: inline-block;
+}
+.fixed-val li:nth-child(odd), .scroll-val li:nth-child(odd) {
+    background: #eefeee;
+}
+
+.large-fixed, .large-fixed li {  /* large fixed box */
+    width: 3rem;
+}
+.large-fixed li {
+    display: block;
+    text-align: left;
+}
+.large-fixed li span, .inline-scroll li span {
+    white-space: nowrap;
+    word-break: keep-all;
+}
+.large-fixed ul, .inline-scroll ul {
+    overflow: hidden;
+}
+.inline-scroll li {
+    width: 2rem;
+    display: block;
+}
+.small-scroll {    /* large-fixed 需要与 small-scroll 配套使用 */
+    width: calc(100% - 3.1rem);
+}
+
+
+
+
+/**
+ * Created: zhangfs by Atom
+ * Date: 2018/04/14 15:21
+ * Func: 图表固定高度，没有高度echart无法正常展示
+ */
+ .echarts {
+     width: 100%;
+     height: 5rem;
+     padding-bottom: .15rem;
+ }
+
+
+
+
+ /**
+  * Created: zhangfs by Atom
+  * Date: 2018/04/14 15:21
+  * Func: echarts或表格下的独立备注信息 - 案例：车辆分析功能
+  */
+.cont-note {
+    width: 84%;
+    height: auto;
+    padding: 0 6% 0 10%;
+    padding-bottom: .3rem;
+}
+.noteLine {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.29rem;
+    color: #425C72;
+    letter-spacing: 0;
+}
+.noteLine p {
+    width: 100%;
+    height: 0.427rem;
+    line-height: 0.427rem;
+    text-align: center;
+}
+
+.noteLine p span {
+    color: #0DB95F;
+}
+
+
+
+/**
+ * Created: zhangfs by Atom
+ * Date: 2018/04/16 09:55
+ * Func: 多选择弹出下拉面板三列选择器
+ */
+.multiSelection {
+    width: 100%;
+    height: 1rem;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+}
+
+.multiSelection .selection-box {
+    position: relative;
+    width: auto;
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 0.27rem;
+    color: #0DB95F;
+    margin: -.1rem 0 0 1rem;
+}
+
+.multiSelection .selection-box:after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    border-top: solid #09CA65 .09rem;
+    border-left: solid transparent .08rem;
+    border-right: solid transparent .08rem;
+}
+
+.multiSelection .selection-box input:nth-of-type(1) {
+    width: .8rem;
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+    font-size: 0.27rem;
+    color: #0DB95F;
+}
+
+.multiSelection .clearLeftGap {
+    margin-left: 0 !important;
+}
+
+
+
+/**
+ * Created: zhangfs by Atom
+ * Date: 2018/04/18 09:55
+ * Func: 控制表格增减幅度上下箭头样式
+ */
+.headLine p, li p {
+    position: relative;
+}
+
+li p img {
+    position: absolute;
+    left: 75%;
+    top: 25%;
+    width: 0.25rem;
+}
+
+
+
+/**
+ * Created: zhangfs by Atom
+ * Date: 2018/04/19 14:20
+ * Func: 数据图表日期凸出显示模块
+ * E.g.: 实时监控页面; 适配和个性化颜色去页面css文件单独做
+ */
+.bulge-datePicker {
+    position: relative;
+    width: 6.18rem;
+    height: 1rem;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 2.67rem;
+}
+
+.bulge-datePicker .singleDatePicker, .bulge-datePicker .monthPicker {
+    position: absolute;
+    top: -.25rem;
+    border: solid .15rem #ffffff;
+}
+
+.bulge-datePicker .monthPicker {
+    margin-left: .7rem;
+}
+
+.flag-title {
+    position: absolute;
+    left: .23rem;
+    width: .75rem;
+    height: .82rem;
+    line-height: .3rem;
+    color: #ffffff;
+    font-size: .267rem;
+    text-align: center;
+    padding-top: .15rem;
+    margin-top: -.05rem;
+    box-shadow: -.02rem 0 .2rem 0 #ddd;
+    /*background: -moz-linear-gradient(180deg, #f1d591 10%, #ffa313);
+    background: -ms-linear-gradient(180deg, #f1d591 10%, #ffa313);
+    background: -o-linear-gradient(180deg, #f1d591 10%, #ffa313);
+    background: -webkit-linear-gradient(180deg, #f1d591 10%, #ffa313);*/
+    background: linear-gradient(180deg, #f1d591 10%, #ffa313);
+}/* 适配和颜色去页面css单独做 */
+
+.flag-title:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.02rem;
+    width: 0;
+    height: 0;
+    border-bottom: solid .12rem #ffffff;
+    border-right: solid .375rem #FFA312;
+    border-left: solid .375rem #FFA312;
+}
+
+
+
+/**
+ * Created: zhangfs by Atom
+ * Date: 2018/04/19 14:20
+ * Func: 城市概况样式
+ * E.g.: KPI页面-城市概况; 适合内容: 1/2/3列且每一列中有上下两栏数据展示
+ */
+.overview-box {
+    width: 100%;
+    padding-bottom: .3rem;
+}
+.overview-line {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: .1rem;
+}
+.overview-line:last-child {
+    padding-bottom: .2rem;
+}
+.overview-line>div {
+    width: 100%;
+    height: 1.2rem;
+    text-align: center;
+}
+.overview-line>div p:first-child {
+    height: .8rem;
+    color: #0DB95F;
+    font-size: 0.37rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-weight: bold;
+}
+.overview-line div p:last-child {
+    color: #647888;
+    font-size: 0.27rem;
+    line-height: .5rem;
+}
+.overview-btn {
+    display: flex;
+    justify-content: space-around;
+    width: 3.73rem;
+    height: 0.96rem;
+    line-height: 0.96rem;
+    letter-spacing: .05rem;
+    color: #ffffff;
+    font-size: .37rem;
+    margin: 0.2rem auto 0;
+    border-radius: .93rem;
+    background: linear-gradient(-180deg, #14CA77 28%, #0DB95F 85%);
+    box-shadow: 0 0.0533333333rem 0.2133333333rem 0 rgba(13, 185, 95, 0.5);
+}
+
+
+
+/*
+ * Created: zhangfs by Atom
+ * Date: 2018/04/24 11:50
+ * Func: 导航栏目城市选择控件 及 日期选择控件
+ */
+#demo3 {
+    color: #ABB7C1;
+    background: transparent;
+    text-align: right;
+    width: 1.4rem;
+    line-height: 0.48rem;
+    height: 0.48rem;
+    font-size: .31rem;
+}
+
+/* mobiscroll 样式自定义 */
+.gearArea {
+    font-size: .31rem;
+}
+
+div.dw-persp div.dw.dwbg {
+    top: auto !important;
+    bottom: 0;
+    padding-bottom: .1rem;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+    position: fixed;
+}
+
+.dwv {
+    padding: 20px 0;
+    font-size: 0.45rem;
+}
+.dwc {
+    padding-top: 80px;
+}
+.dwsc .dww {
+    width: 2.5rem;
+}
+.dw-li {
+    font-size: 0.5rem;
+}
+.dwl {
+    line-height: 80px;
+    height: 80px;
+    top: -80px;
+    font-size: 0.45rem;
+}
+.dwbg .dwb {
+    height: .8rem;
+    line-height: .8rem;
+    font-size: 0.4rem;
+    border-radius: .1rem;
+}
+.dwwr {
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+.android-ics .dwv {
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+    height: 40px;
+    line-height: 45px;
+    font-weight: bold;
+}
+
+/* LArea 样式自定义 */
+.area_ctrl {
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+.area_btn {
+    line-height: 1.3em;
+    padding: .8em 1.2em;
+}
+.area_btn_box {
+    background: #FAFAFA;
+}
+.area_roll_mask {
+    -webkit-mask: initial;
+    background: #FFFFFF;
+}
+.larea_cancel {
+    color: #272828;
+}
+.larea_finish {
+    color: #6034FF;
+}
+.area_roll>div {
+    font-size: 1.61em;
+}
+.area_grid {
+    border-top: 1px solid #6034FF;
+    border-bottom: 1px solid #6034FF;
+}
+
+
+
+/**
+ * Created: zhangfs by Atom
+ * Date: 2018/04/23 20:30
+ * Func: 侧边栏效果
+ */
+.slideBarBg {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 20, 0.4);
+    display: none;
+    z-index: 300;
+}
+.slideBar {
+    width: 4.5rem;
+    position: fixed;
+    left: -4.93rem;
+    top: 0;
+    background-image: linear-gradient(-224deg, #3F4955 0%, #171C22 72%);
+    box-shadow: 0.27rem 0 0.27rem 0 rgba(37, 42, 48, 0.7);
+    z-index: 302;
+}
+
+.slideUser {
+    width: 100%;
+    height: 1.33rem;
+    margin-top: 1.33rem;
+}
+.slideUser div:first-child {
+    width: 1.33rem;
+    height: 1.33rem;
+    background: url(../images/icon_user_default.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+    margin-left: 0.6rem;
+    float: left;
+}
+.slideUser div:last-child {
+    height: 1.33rem;
+    line-height: 1.33rem;
+    font-size: 0.43rem;
+    color: #768998;
+    letter-spacing: 0.027rem;
+    margin-left: 0.23rem;
+    float: left;
+}
+
+.slideMenu {
+    width: 100%;
+    margin-top: .8rem;
+}
+
+.slideMenu ul li .active:last-child {
+    color: #09CA65;
+    background-image: initial;
+}
+.slideMenu ul {
+    padding-bottom: 2rem;
+}
+
+.slideMenu ul li {
+    display: flex;
+    width: 100%;
+    height: .53rem;
+    margin-top: .53rem;
+}
+
+.slideMenu ul li p {
+    font-size: 0.37rem;
+    color: #ABB7C1;
+    letter-spacing: 0.027rem;
+    margin-left: 0.27rem;
+}
+
+.slideMenu ul li span {
+    margin-top: 0.08rem;
+    width: 0.37rem;
+    height: 0.37rem;
+    margin-left: 0.43rem;
+}
+
+.slideBar a {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    line-height: 0.48rem;
+    font-size: 0.35rem;
+    color: #768998;
+    text-align: center;
+    bottom: 0.53rem;
+}
+
+
+body {
+    padding-top: constant(safe-area-inset-top);
+    padding-bottom: constant(safe-area-inset-bottom);
+}
+@media screen and (width:375px){
+    /*body {
+        padding-top: 0px;
+        background: #f5f5f5;
+        overflow: hidden;
+        box-sizing: content-box;
+    }
+    .box {
+        margin-top: 1.5rem;
+        height: calc(100% - 1.9rem);
+    }
+    .header {
+        top: 20px;
+    }*/
+}
+
+
+
+
+
+
+/* 目录各图标 */
+.m-income span {
+    background: url(../images/income.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-income .active {
+    background: url(../images/income_chose.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-operation span {
+    background: url(../images/operation.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-operation .active {
+    background: url(../images/operation_chose.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-customer span {
+    background: url(../images/service.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-customer .active {
+    background: url(../images/service_chose.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-orders span {
+    background: url(../images/order.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-orders .active {
+    background: url(../images/order_chose.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-site span {
+    background: url(../images/sites.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-site .active {
+    background: url(../images/sites_chose.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-user span {
+    background: url(../images/user.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-user .active {
+    background: url(../images/user_chose.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-kpis span {
+    background: url(../images/kpi.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-kpis .active {
+    background: url(../images/kpi_chose.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-cars span {
+    background: url(../images/cars.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-cars .active {
+    background: url(../images/cars_chose.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-watch span {
+    background: url(../images/watch.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-watch .active {
+    background: url(../images/watch_chose.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-app span {
+    background: url(../images/app.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-app .active {
+    background: url(../images/app_chose.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-maps span {
+    background: url(../images/chezi.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-maps .active {
+    background: url(../images/chezi_chose.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-essence span {
+    background: url(../images/caculater.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-essence .active {
+    background: url(../images/caculater_chose.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-essenceNew span {
+    background: url(../images/caculater.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.m-essenceNew .active {
+    background: url(../images/caculater_chose.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+}

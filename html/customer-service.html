@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="flexible" content="initial-dpr=2,maximum-dpr=3,user-scalable=no" />
+    <title>驾驶舱—客服分析</title>
+    <script src="../libs/flexible.js"></script>
+    <link rel="stylesheet" href="../css/mobiscroll.custom-2.5.2.min_my.css"/>
+    <link rel="stylesheet" href="../css/LArea.css">
+    <link rel="stylesheet" type="text/css" href="../css/service.css">
+    <link rel="stylesheet" type="text/css" href="../css/customer-service.css">
+    <script src="../libs/jquery-3.1.1.min.js"></script>
+    <script src="../js/common/configEnv.js"></script>
+    <script src="../js/common/config.js"></script>
+    <script src="../libs/mobiscroll.custom-2.5.2.min.js"></script>
+    <script src="../libs/LArea.js"></script>
+    <script src="../libs/echarts.min.js"></script>
+    <script src='../js/customer-service/serviceOption.js'></script>
+</head>
+<body>
+    <div class="box">
+        <!-- 导航栏 -->
+        <header class="header clearfix">
+            <div class="slideBtn"></div>
+            <div class="logo"></div>
+            <div class="location">
+                <div class="content-block showCity">
+                    <input id="demo3" type="text" readonly="" onfocus="this.blur();" />
+                    <input id="value3" type="hidden" />
+                </div>
+                <div class="showCityIcon"></div>
+            </div>
+        </header>
+
+        <!-- 客服概况 -->
+        <section class="section-box" section-id="50">
+            <div class="wrap cs clearTopGap">
+                <div class="cont-title">客服概况</div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime1" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime2" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val cs-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header cs-sh">
+                            <p>总呼入量</p>
+                            <p>IVR(自助服务)</p>
+                            <p>转人工量</p>
+                            <p>成功接起</p>
+                            <p>接起率</p>
+                            <p>外呼数量</p>
+                            <p>外呼实际接通</p>
+                            <p>接通率</p>
+                            <p>CPO</p>
+                            <p>人员日均接听量</p>
+                            <p>首解率</p>
+                        </div>
+                        <ul class="scroll-val cs-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre cs-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage cs-nowpage">1</span>/<span class="allpage cs-allpage">1</span>
+                    </div>
+                    <div class="page-next cs-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble cs-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 双证审核详情 -->
+        <section class="section-box" section-id="52">
+            <div class="wrap">
+                <div class="cont-title">双证审核详情</div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime3" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime4" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val dc-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header dc-sh">
+                            <p>身份证提交人数</p>
+                            <p>驾照提交人数</p>
+                            <p>双证提交人数</p>
+                            <p>身份证审核通过率</p>
+                            <p>驾照审核通过率</p>
+                            <p>双证审核通过率</p>
+                        </div>
+                        <ul class="scroll-val dc-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre dc-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage dc-nowpage">1</span>/<span class="allpage dc-allpage">1</span>
+                    </div>
+                    <div class="page-next dc-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble dc-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 工单类型 -->
+        <section class="section-box">
+            <div class="wrap workorder">
+                <div class="cont-title">工单类型分布</div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime5" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime6" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="echarts" id="workorderChart"></div>
+            </div>
+        </section>
+
+        <!-- 工单类型详情 -->
+        <section class="section-box">
+            <div class="wrap workorderDetail">
+                <div class="cont-title">工单类型详情</div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime7" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime8" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val wod-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header wod-sh">
+                            <p>车辆使用占比</p>
+                            <p>订单问题占比</p>
+                            <p>网点问题占比</p>
+                            <p>注册问题占比</p>
+                        </div>
+                        <ul class="scroll-val wod-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre woDetail-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage woDetail-nowpage">1</span>/<span class="allpage woDetail-allpage">1</span>
+                    </div>
+                    <div class="page-next woDetail-nextpage"> > </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 工单量详情 -->
+        <section class="section-box">
+            <div class="wrap workorderAmount">
+                <div class="cont-title">工单量统计</div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime9" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime10" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val woa-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header woa-sh">
+                          <p>工单总数</p>
+                          <p>跟进中总数</p>
+                          <p>新增工单(已完成)</p>
+                          <p>完成率</p>
+                        </div>
+                        <ul class="scroll-val woa-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre woAmount-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage woAmount-nowpage">1</span>/<span class="allpage woAmount-allpage">1</span>
+                    </div>
+                    <div class="page-next woAmount-nextpage"> > </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src='../js/common/biMonitor.js'></script>
+</body>
+</html>

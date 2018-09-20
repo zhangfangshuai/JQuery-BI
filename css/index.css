@@ -1,0 +1,105 @@
+::-webkit-input-placeholder {
+    color: #4CD78F;
+}
+
+:-moz-placeholder {   /* Mozilla Firefox 4 to 18 */
+    color: #4CD78F;
+}
+
+::-moz-placeholder {    /* Mozilla Firefox 19+ */
+    color: #4CD78F;
+}
+
+:-ms-input-placeholder {   /* Internet Explorer 10-11 */
+    color: #4CD78F;
+}
+
+input {
+    color: #696969;
+    width: 6rem;
+    border: none;
+}
+
+body, html {
+    background: #fff;
+}
+
+.box {
+  width: 10rem;
+  background: #fff; }
+  .box .login {
+    width: 10rem;
+    height: 9.2rem;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -4.6rem; }
+    .box .login .logo {
+      width: 3.2266666667rem;
+      height: 2rem;
+      background: url("../images/logo_login.png");
+      -webkit-background-size: cover;
+      background-size: cover;
+      margin: 0 auto; }
+    .box .login .user {
+      width: 6.4rem;
+      height: 1.0666666667rem;
+      border-bottom: 0.03rem solid #C6EFD9;
+      margin: 1.3333333333rem auto 0; }
+      .box .login .user .userIcon {
+        display: inline-block;
+        width: 0.3466666667rem;
+        height: 0.48rem;
+        background: url("../images/icon_user.png");
+        -webkit-background-size: cover;
+        background-size: cover;
+        margin-left: 0.2666666667rem;
+        margin-top: 0.5333333333rem; }
+      .box .login .user .userName {
+        font-size: 0.3733333333rem;
+        color: #4CD78F;
+        letter-spacing: 0.0416rem;
+        vertical-align: super;
+        margin-left: 0.33333rem;
+        width: 5.2rem;
+        height: 100%;
+        background: transparent;
+        caret-color: #4CD78F; }
+    .box .login .words {
+      width: 6.4rem;
+      height: 1.0666666667rem;
+      border-bottom: 0.03rem solid #C6EFD9;
+      margin: 0.32rem auto 0; }
+      .box .login .words .wordsIcon {
+        display: inline-block;
+        width: 0.3466666667rem;
+        height: 0.48rem;
+        background: url("../images/icon_password.png");
+        -webkit-background-size: cover;
+        background-size: cover;
+        margin-left: 0.2666666667rem;
+        margin-top: 0.5333333333rem; }
+      .box .login .words .wordsName {
+        font-size: 0.3733333333rem;
+        color: #4CD78F;
+        letter-spacing: 0.0416rem;
+        vertical-align: super;
+        margin-left: 0.33333rem;
+        width: 5.2rem;
+        background: transparent;
+        height: 100%;
+        caret-color: #4CD78F; }
+    .box .login .loginBtn {
+      background-image: linear-gradient(-180deg, #14CA77 28%, #0DB95F 85%);
+      box-shadow: 0 0.16rem 0.3466666667rem 0 rgba(13, 185, 95, 0.5);
+      border-radius: 0.9333333333rem;
+      width: 4.4rem;
+      height: 1.2rem;
+      margin: 1.6rem auto 0;
+      font-size: 0.4266666667rem;
+      color: #FFFFFF;
+      letter-spacing: 0.0533333333rem;
+      text-align: center;
+      line-height: 1.2rem; }
+
+/*# sourceMappingURL=index.css.map */

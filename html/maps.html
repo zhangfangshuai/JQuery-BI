@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>驾驶舱-大屏监控</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="flexible" content="initial-dpr=2, maximum-dpr=3, user-scalable=no" />
+    <script src="../libs/flexible.js"></script>
+    <link rel="stylesheet" href="../css/mobiscroll.custom-2.5.2.min_my.css"/>
+    <link rel="stylesheet" href="../css/LArea.css">
+    <link rel="stylesheet" type="text/css" href="../css/service.css">
+    <link rel="stylesheet" type="text/css" href="../css/maps.css">
+    <script src="../libs/jquery-3.1.1.min.js"></script>
+    <script src="../js/common/config.js"></script>
+    <script src="../js/common/configEnv.js"></script>
+    <script src="../libs/mobiscroll.custom-2.5.2.min.js"></script>
+    <script src="../libs/LArea.js"></script>
+    <script src="../libs/echarts.js"></script>
+    <script src='../js/maps/mapsStyle.js'></script>
+    <script src='../js/maps/mapsOption.js'></script>
+    <script src="../libs/bmap.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+    <script type="text/javascript" src="../libs/baiduMap/Heatmap_min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <div id="mask" style="display: none"></div>
+        <div class="loading flip-wrap" style="display: none"><span></span></div>
+        <!-- 导航栏 -->
+        <header class="header clearfix">
+            <div class="slideBtn"></div>
+            <div class="logo"></div>
+            <div class="location">
+                <div class="content-block showCity">
+                    <input id="demo3" type="text" readonly="" onfocus="this.blur();" />
+                    <input id="value3" type="hidden" />
+                </div>
+                <div class="showCityIcon"></div>
+            </div>
+        </header>
+        <div class="mapsBar">
+            <p id="cities">开城布局</p>
+            <p id="calls">来电监听</p>
+            <p id="carSeat">车辆位置</p>
+            <p id="driveTrail">行驶轨迹</p>
+            <p id="openApp">打开热力图</p>
+        </div>
+        <div class="singleDatePicker" style="display: none">
+            <div class="preDateBtn map-predate">前一天</div>
+            <div class="showDate">
+                <input id="appDateTime1" class="appDateTime" onfocus="this.blur();">
+                <span class="showWeek1"></span>
+            </div>
+            <div class="nextDateBtn map-nextdate">后一天</div>
+        </div>
+        <!-- 百度地图 -->
+        <div id="bMap"></div>
+        <div id="eMap"></div>
+        <div id="carSeatBar">
+            <p id="forrent">待<br/>租<br/><span>0</span></p>
+            <p id="reserve">预<br/>定<br/>中<br/><span>0</span></p>
+            <p id="onserve">服<br/>务<br/>中<br/><span>0</span></p>
+            <p id="stopserve">停<br/>止<br/>服<br/>务<br/><span>0</span></p>
+            <p id="lowcharge">低<br/>电<br/>停<br/>服<br/><span>0</span></p>
+            <p id="parks">网<br/>点</p>
+        </div>
+
+        <div id="heatparkfun">
+            <p id="heat">热<br/>力<br/>图</p>
+            <p id="park">实<br/>体<br/>网<br/>点<br/></p>
+            <p id="fun">虚<br/>拟<br/>网<br/>点<br/></p>
+        </div>
+        <div id="parkfun">
+            <p id="park2">实<br/>体<br/>网<br/>点<br/><span>0</span></p>
+            <p id="fun2">虚<br/>拟<br/>网<br/>点<br/><span>0</span></p>
+        </div>
+    </div>
+    <script src='../js/common/biMonitor.js'></script>
+</body>
+</html>

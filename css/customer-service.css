@@ -1,0 +1,38 @@
+.echarts {
+    height: 6rem;
+}
+
+/* customer service base */
+.cs-sh, .cs-sv {
+    width: 22rem;
+}
+.cs-sh p, .cs-sv li p { width: 9%; }
+.cs-sh p:nth-child(2), .cs-sv li p:nth-child(2) { width: 12%; }
+.cs-sh p:nth-child(5), .cs-sv li p:nth-child(5) { width: 8%; }
+.cs-sh p:nth-child(7), .cs-sv li p:nth-child(7) { width: 12%; }
+.cs-sh p:nth-child(8), .cs-sv li p:nth-child(8) { width: 8%; }
+.cs-sh p:nth-child(9), .cs-sv li p:nth-child(9) { width: 7%; }
+.cs-sh p:nth-child(10), .cs-sv li p:nth-child(10) { width: 13%; }
+.cs-sh p:nth-child(11), .cs-sv li p:nth-child(11) { width: 8%; }
+
+/* double client */
+.dc-sh, .dc-sv {
+    width: 17rem;
+}
+.dc-sh p, .dc-sv li p { width: 17%; }
+.dc-sh p:nth-child(2), .dc-sv li p:nth-child(2) { width: 15.5%; }
+.dc-sh p:nth-child(3), .dc-sv li p:nth-child(3) { width: 15.5%; }
+.dc-sh p:nth-child(4), .dc-sv li p:nth-child(4) { width: 18%; }
+
+/* workorder detail */
+.wod-sh, .wod-sv { width: 10rem; }
+.wod-sh p, .wod-sv li p { width: 25%; }
+
+/* workorder amount */
+.woa-sh, .woa-sv {
+    width: 9rem;
+}
+.woa-sh p:nth-child(1), .woa-sv li p:nth-child(1) { width: 22%; }
+.woa-sh p:nth-child(2), .woa-sv li p:nth-child(2) { width: 25%; }
+.woa-sh p:nth-child(3), .woa-sv li p:nth-child(3) { width: 33%; }
+.woa-sh p:nth-child(4), .woa-sv li p:nth-child(4) { width: 19%; }

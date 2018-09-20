@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="flexible" content="initial-dpr=2,maximum-dpr=3,user-scalable=no" />
+    <title>驾驶舱—车辆</title>
+    <script src="../libs/flexible.js"></script>
+    <link rel="stylesheet" href="../css/mobiscroll.custom-2.5.2.min_my.css"/>
+    <link rel="stylesheet" href="../css/LArea.css" />
+    <link rel="stylesheet" type="text/css" href="../css/service.css?3" />
+    <link rel="stylesheet" type="text/css" href="../css/cars.css" />
+    <script src="../libs/jquery-3.1.1.min.js"></script>
+    <script src="../js/common/config.js"></script>
+    <script src="../js/common/configEnv.js"></script>
+    <script src="../libs/mobiscroll.custom-2.5.2.min.js"></script>
+    <script src="../libs/LArea.js"></script>
+    <script src="../libs/echarts.min.js"></script>
+    <script src="../js/cars/carsOption.js?v=3.0.1"></script>
+</head>
+<body>
+    <div class="box">
+        <!-- 导航栏 -->
+        <header class="header clearfix">
+            <div class="slideBtn"></div>
+            <div class="logo"></div>
+            <div class="location">
+                <div class="content-block showCity">
+                    <input id="demo3" type="text" readonly="" onfocus="this.blur();" />
+                    <input id="value3" type="hidden" />
+                </div>
+                <div class="showCityIcon"></div>
+            </div>
+        </header>
+
+        <!-- 车辆概况 car -->
+        <section class="section-box" section-id="40">
+            <div class="wrap clearTopGap">
+                <div class="cont-title">车辆概况</div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime2" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime3" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val car-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header car-sh">
+                            <p>总购置车辆</p>
+                            <p>可运营车辆</p>
+                            <p>平均上架车辆</p>
+                            <p>平均下架车辆</p>
+                            <p>平均低电下架</p>
+                            <p>平均运维下架</p>
+                            <p>平均事故下架</p>
+                            <p>平均维修下架</p>
+                            <p>平均车机离线下架</p>
+                            <p>平均物料缺失下架</p>
+                        </div>
+                        <ul class="scroll-val car-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre car-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage car-nowpage">1</span>/<span class="allpage car-allpage">1</span>
+                    </div>
+                    <div class="page-next car-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble car-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 上架率堆叠图 -->
+        <section class="section-box" section-id="41">
+            <div class="wrap stacks">
+                <div class="cont-title">上架率</div>
+                <div class="threeColumnSelection">
+                    <div class="tcs col-1 active" data-hourId="10">10点</div>
+                    <div class="tcs col-2" data-hourId="17">17点</div>
+                    <div class="tcs col-3" data-hourId="-1">全天</div>
+                </div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime4" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime5" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="echarts" id="dateCarChart1"></div>
+                <div class="cont-note">
+                    <div class="noteLine">
+                        <p>平均上架率 <span class="car-notedata"></span> </p>
+                    </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble sjl-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 车机离线图 offline-chart -->
+        <section class="section-box" section-id='42'>
+            <div class="wrap offline-chart">
+                <div class="cont-title">车机离线图</div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime6" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime7" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="echarts" id="dateCarChart2"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble lxt-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 车机离线状况 offline-table -->
+        <section class="section-box" section-id="43">
+            <div class="wrap clearTopGap">
+                <div class="hook"></div>
+                <div class="cont-title">车机离线状况</div>
+                <div class="headLine offline-head">
+                    <p>日期</p>
+                    <p>城市</p>
+                    <p>车机离线数量</p>
+                </div>
+                <ul class="itemVal offVal"></ul>
+
+                <div class="pagenation">
+                    <div class="page-pre off-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage off-nowpage">1</span>/<span class="allpage off-allpage">1</span>
+                    </div>
+                    <div class="page-next off-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble offline-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 车辆状态时长 -->
+        <section class="section-box">
+            <div class="wrap car-timing">
+                <div class="cont-title">车辆状态时长
+                    <div class="simpleSelection">
+                        <div class="toggleIcon"></div>
+                        <input id="ctmtog" class="selectVal" value="全部" readonly="" onfocus="this.blur();"/>
+                        <input id="ctmtog-val" type="hidden" />
+                    </div>
+                </div>
+                <div class="carType-box">
+                    <p class="car-type ctm-ct active" data-type='0'>全部</p>
+                    <p class="car-type ctm-ct" data-type='1'>电车</p>
+                    <p class="car-type ctm-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime8" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime9" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="echarts" id="ctmChart"></div>
+                <div class="cont-note ctm-notebar"></div>
+            </div>
+        </section>
+
+        <section class="section-box">
+            <div class="wrap">
+                <div class="cont-title">车辆时长概况</div>
+                <div class="carType-box">
+                    <p class="car-type ctt-ct active" data-type='0'>全部</p>
+                    <p class="car-type ctt-ct" data-type='1'>电车</p>
+                    <p class="car-type ctt-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime10" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime11" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val ctt-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header ctt-sh">
+                            <p>车均上架时长</p>
+                            <p>车均待租时长</p>
+                            <p>车均服务时长</p>
+                            <p>车均运维时长</p>
+                            <p>车均充电时长</p>
+                            <p>车均低续航时长</p>
+                            <p>车均其他原因时长</p>
+                            <p>车均车机离线时长</p>
+                            <p>车均物料缺失时长</p>
+                        </div>
+                        <ul class="scroll-val ctt-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre ctt-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage ctt-nowpage">1</span>/<span class="allpage ctt-allpage">1</span>
+                    </div>
+                    <div class="page-next ctt-nextpage"> > </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-box">
+            <div class="wrap">
+                <div class="cont-title">车均上架时长排名</div>
+                <div class="carType-box">
+                    <p class="car-type ttop-ct active" data-type='0'>全部</p>
+                    <p class="car-type ttop-ct" data-type='1'>电车</p>
+                    <p class="car-type ttop-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="singleDatePicker">
+                    <div class="preDateBtn ttop-predate">前一天</div>
+                    <div class="showDate">
+                        <input id="appDateTime12" class="appDateTime" onfocus="this.blur();">
+                        <span class="showWeek12"></span>
+                    </div>
+                    <div class="nextDateBtn ttop-nextdate">后一天</div>
+                </div>
+                <div class="scroll-cont">
+                    <div class="headLine ttopHead">
+                        <p>排名</p>
+                        <p>城市</p>
+                        <p>上架时长</p>
+                        <p>服务时长</p>
+                        <p>待租时长</p>
+                    </div>
+                    <ul class="itemVal ttopVal"></ul>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre ttop-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage ttop-nowpage">1</span>/<span class="allpage ttop-allpage">1</span>
+                    </div>
+                    <div class="page-next ttop-nextpage"> > </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-box">
+            <div class="wrap emptyRunRate">
+                <div class="cont-title">空驶率统计</div>
+                <div class="carType-box">
+                    <p class="car-type er-ct active" data-type='0'>全部</p>
+                    <p class="car-type er-ct" data-type='1'>电车</p>
+                    <p class="car-type er-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime13" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime14" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box inline-scroll">
+                        <p class="fixed-header">城市</p>
+                        <ul class="fixed-val er-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header er-sh">
+                            <p>累计里程</p>
+                            <p>总订单里程</p>
+                            <p>起始续航里程</p>
+                            <p>结束续航里程</p>
+                            <p>空驶率</p>
+                        </div>
+                        <ul class="scroll-val er-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre er-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage er-nowpage">1</span>/<span class="allpage er-allpage">1</span>
+                    </div>
+                    <div class="page-next er-nextpage"> > </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-box">
+            <div class="wrap car-clean">
+                <div class="cont-title">车辆清洁统计</div>
+                <div class="monthPicker">
+                    <div class="preMonthBtn cc-premonth">上一月</div>
+                    <div class="showMonth">
+                        <input type="text" id="appMonth1" class="appMonth" onfocus="this.blur();">
+                    </div>
+                    <div class="nextMonthBtn cc-nextmonth">下一月</div>
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box inline-scroll clear-fixed-margin">
+                        <p class="fixed-header">城市</p>
+                        <ul class="fixed-val cc-fv1"></ul>
+                    </div>
+                    <div class="fixed-box">
+                        <p class="fixed-header">车辆数</p>
+                        <ul class="fixed-val cc-fv2"></ul>
+                    </div>
+                    <div class="scroll-box cc-scroll-box">
+                        <div class="scroll-header cc-sh"></div>
+                        <ul class="scroll-val cc-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre cc-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage cc-nowpage">1</span>/<span class="allpage cc-allpage">1</span>
+                    </div>
+                    <div class="page-next cc-nextpage"> > </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src='../js/common/biMonitor.js'></script>
+</body>
+</html>

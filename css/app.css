@@ -1,0 +1,46 @@
+.echarts {
+    height: 4.7rem;
+}
+
+.funnelDate {
+    position: absolute;
+    top: 3.7rem;
+    left: 6.5rem;
+    width: 1rem;
+    z-index: 200;
+}
+
+.funnelDate .per {
+    width: 100%;
+    height: .85rem;
+    line-height: .85rem;
+    font-size: .25rem;
+    color: #0F0F0F;
+    z-index: 201;
+}
+
+.dau-start-funnel .funnelDate {
+    top: 1rem;
+}
+
+.dau-start-funnel {
+    margin-top: .2rem;
+}
+
+/* dau table */
+.dauT-sh, .dauT-sv { width: 10rem; }
+.dauT-sh p, .dauT-sv li p { width: 25%; }
+
+/* diffrient user start */
+.dur-sh, .dur-sv { width: 8rem; }
+.dur-sh p, .dur-sv li p { width: 32.5%; }
+.dur-sh p:nth-child(3), .dur-sv li p:nth-child(3) { width: 35%; }
+
+/* city compare */
+.dc-sh, .dc-sv { width: 22rem; }
+.dc-sh p, .dc-sv li p { width: 14%; }
+.dc-sh p:nth-child(1), .dc-sv li p:nth-child(1) { width: 9%; }
+.dc-sh p:nth-child(2), .dc-sv li p:nth-child(2) { width: 11%; }
+.dc-sh p:nth-child(3), .dc-sv li p:nth-child(3) { width: 16%; }
+.dc-sh p:nth-child(4), .dc-sv li p:nth-child(4) { width: 12%; }
+.dc-sh p:nth-child(8), .dc-sv li p:nth-child(8) { width: 10%; }

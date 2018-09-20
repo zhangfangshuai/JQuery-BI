@@ -1,0 +1,370 @@
+/*.box {
+    background: #262626;
+}
+section {
+    background: #262626;
+}
+.cont-title {
+    color: #6a41ea;
+}*/
+.echarts {
+    height: 4rem;
+}
+.echarts-funnel {
+    height: 5rem;
+}
+
+nav, aside {
+    position: fixed;
+    right: 0px;
+    z-index: 290;
+}
+aside .active {
+    background: #0f9a51;
+    color: white;
+}
+
+nav p, aside p {
+    width: .7rem;
+    line-height: .8rem;
+    margin-top: 38px;
+    font-size: .3rem;
+    color: #0f9a51;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    box-sizing: border-box;
+    background: rgba(175, 234, 230, 0.4);
+    border: solid 1px #0DB95F;
+    border-radius: .17rem;
+    position: fixed;
+    right: 0;
+}
+nav p{
+    width: 2.3rem;
+    margin-top: 30px;
+    border: none;
+    border-top-left-radius: .4rem;
+    border-bottom-left-radius: .4rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+aside p:first-child {
+    bottom: 32vh;
+}
+aside p:nth-child(2) {
+    bottom: 26vh;
+}
+aside p:nth-child(3) {
+    bottom: 20vh;
+}
+aside p:nth-child(4) {
+    bottom: 14vh;
+}
+aside p:nth-child(5) {
+    bottom: 8vh;
+}
+
+.cont-note {
+    width: 87%;
+    padding: 0 5% 0 8%;
+}
+.bulge-datePicker {
+    margin-top: .5rem;
+}
+.snap {
+    position: relative;
+    width: 55%;
+    line-height: 1rem;
+    font-size: .3rem;
+    font-weight: bold;
+    color: white;
+    margin: 0.3rem auto 0;
+    text-align: center;
+    padding: 0 .7rem;
+    box-sizing: border-box;
+    background: #cfdc6a;
+}
+.snap::before {
+    content: '';
+    position: absolute;
+    left: -3px;
+    width: 0;
+    height: 0;
+    border-left: .5rem solid #f5f5f5;
+    border-top: .5rem solid transparent;
+    border-bottom: .5rem solid transparent;
+}
+.snap::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    width: 0;
+    height: 0;
+    border-right: .5rem solid #f5f5f5;
+    border-top: .5rem solid transparent;
+    border-bottom: .5rem solid transparent;
+}
+.snap span {
+    font-size: .35rem;
+}
+.bigGap {
+    margin-top: .7rem;
+}
+.boards {
+    padding: 1%;
+}
+.boards>p, .itemVal div {   /* 默认提示文案 */
+    font-size: .33rem;
+    text-align: center;
+    color: #656565;
+}
+
+.board {
+    width: 30%;
+    height: 2.1rem;
+    border: solid 1px #0DB95F;
+    border-radius: .15rem;
+    margin: 15px 1.5%;
+    background: honeydew;
+    display: inline-block;
+}
+.board:nth-child(3n-2) {
+    background: #3598dc;
+}
+.board:nth-child(3n-1) {
+    background: #c49f47;
+}
+.board:nth-child(3n) {
+    background: #8E44AD;
+}
+
+.dash-real {
+    height: 50%;
+    padding: 5% 5% 0;
+    border-bottom: solid 2px #FFFFFF;
+}
+.dash-real>p:first-child {
+    line-height: 0.5rem;
+    font-size: 0.35rem;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+}
+.dash-real>p:last-child {
+    float: right;
+    font-size: .29rem;
+    margin-right: .1rem;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.dash-compare {
+    width: 90%;
+    height: 45%;
+    padding: 0 5%;
+    font-size: 0;
+}
+.dash-compare div {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    padding-top: 3%;
+    box-sizing: border-box;
+}
+.dash-compare div:first-child {
+    border-right: solid 2px #FFFFFF;
+}
+.dash-compare div p {
+    text-align: center;
+}
+.dash-compare div p:first-child {
+    line-height: .4rem;
+    font-size: .33rem;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+.dash-compare div p:last-child {
+    font-size: .22rem;
+    color: #FFFFFF;
+}
+/* 出现负数使用红色 */
+.fontRed p:first-child {
+    color: red !important;
+}
+
+/* income real icon */
+.income-chart .flag-title {
+    background: -moz-linear-gradient(180deg, #f1d591 10%, #ffa313);
+    background: -ms-linear-gradient(180deg, #f1d591 10%, #ffa313);
+    background: -o-linear-gradient(180deg, #f1d591 10%, #ffa313);
+    background: -webkit-linear-gradient(180deg, #f1d591 10%, #ffa313);
+    background: linear-gradient(180deg, #f1d591 10%, #ffa313);
+}
+.income-chart .flag-title:before {
+    border-right: solid .375rem #ffa313;
+    border-left: solid .375rem #ffa313;
+}
+
+
+/* car real icon */
+.car-chart .flag-title {
+    background: -moz-linear-gradient(180deg, #32f9a7 10%, #0db95f);
+    background: -ms-linear-gradient(180deg, #32f9a7 10%, #0db95f);
+    background: -o-linear-gradient(180deg, #32f9a7 10%, #0db95f);
+    background: -webkit-linear-gradient(180deg, #32f9a7 10%, #0db95f);
+    background: linear-gradient(180deg, #32f9a7 10%, #0db95f);
+}
+.car-chart .flag-title:before {
+    border-right: solid .375rem #0db95f;
+    border-left: solid .375rem #0db95f;
+}
+
+
+/* order real icon */
+.order-chart .flag-title {
+    background: -moz-linear-gradient(180deg, #59ffd1 10%, #01c6b6);
+    background: -ms-linear-gradient(180deg, #59ffd1 10%, #01c6b6);
+    background: -o-linear-gradient(180deg, #59ffd1 10%, #01c6b6);
+    background: -webkit-linear-gradient(180deg, #59ffd1 10%, #01c6b6);
+    background: linear-gradient(180deg, #59ffd1 10%, #01c6b6);
+}
+.order-chart .flag-title:before {
+    border-right: solid .375rem #01c6b6;
+    border-left: solid .375rem #01c6b6;
+}
+
+/* new guy real icon */
+.newguy-chart .flag-title {
+    background: -moz-linear-gradient(200deg, #81d4ff 10%, #a28fff);
+    background: -ms-linear-gradient(200deg, #81d4ff 10%, #a28fff);
+    background: -o-linear-gradient(200deg, #81d4ff 10%, #a28fff);
+    background: -webkit-linear-gradient(200deg, #81d4ff 10%, #a28fff);
+    background: linear-gradient(200deg, #81d4ff 10%, #a28fff);
+}
+.newguy-chart .flag-title:before {
+    border-right: solid .375rem #a28fff;
+    border-left: solid .375rem #a28fff;
+}
+
+/* car battery icon */
+.car-battery .flag-title {
+    background: -moz-linear-gradient(200deg, #aee769 10%, #4ab90d);
+    background: -ms-linear-gradient(200deg, #aee769 10%, #4ab90d);
+    background: -o-linear-gradient(200deg, #aee769 10%, #4ab90d);
+    background: -webkit-linear-gradient(200deg, #aee769 10%, #4ab90d);
+    background: linear-gradient(200deg, #aee769 10%, #4ab90d);
+}
+.car-battery .flag-title:before {
+    border-right: solid .375rem #4ab90d;
+    border-left: solid .375rem #4ab90d;
+}
+
+.overview-line>div p:first-child {
+    height: 0.5rem;
+}
+.overview-line, .overview-box {
+    padding-bottom: initial;
+}
+
+#nation_kpi_head p, #nation_kpi_val li p {
+    width: 50%;
+}
+#city_kpi_head p, #city_kpi_val li p {
+    width: 20%;
+}
+#city_kpi_head p:first-child, #city_kpi_val li p:first-child {
+    width: 40%;
+}
+
+#user-sh, #user-sv, #rt-sh, #rt-sv {
+    width: 13rem;
+}
+#effi-sh p, #effi-sv li p, #user-sh p, #user-sv li p, #rt-sh p, #rt-sv li p {
+    width: 100%;
+}
+
+.gauge-line, .gaugedata-line {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.gauge-line div {
+    width: 33%;   /* 100% 配合echarts图表有些问题 */
+    height: 2.5rem;
+    text-align: center;
+}
+.gaugedata-line>div {
+    width: 100%;  /* 100% 让其自动挤压均匀分配 */
+    height: 1rem;
+    text-align: center;
+    padding-top: .1rem;
+}
+
+.gaugedata-line>div:last-child {
+    border-right: initial;
+}
+
+.gaugedata-line>div p:first-child {
+    height: .5rem;
+    color: #0DB95F;
+    font-size: 0.37rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.gaugedata-line>div p:last-child {
+    color: #647888;
+    font-size: 0.27rem;
+    line-height: .5rem;
+}
+.gaugedata-line>div p:last-child span {
+    float: left;
+    text-align: left;
+    white-space: nowrap;
+}
+.chartsCtrl {
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+}
+
+.team {
+    position: relative;
+    padding-right: 1%;
+    line-height: .7rem;
+    box-sizing: border-box;
+}
+.team >span {
+    display: block;
+    width: 100%;
+    color: #656565;
+    text-align: center;
+    font-size: .33rem;
+}
+.team >p {
+    display: inline-block;
+    width: 20%;
+    line-height: .38rem;
+    color: #425C72;
+    text-align: right;
+    padding-right: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.team >p:nth-child(2n) {
+    text-align: left;
+}
+.team progress, meter {
+    width: 49%;
+    height: .38rem;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+.team label {
+    color: #5db303;
+    font-weight: bold;
+}

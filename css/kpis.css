@@ -1,0 +1,156 @@
+/**
+ * Created: dameng by webstorm
+ * Date: 2017/11/15 09:05
+ * Recode: zhangfs by Atom 2018/04/21
+ * Note: old: 353 lines
+ */
+.city-map {
+    background: transparent;
+    box-shadow: initial;
+    margin-bottom: 0;
+}
+
+.city-map .echarts {
+    height: 7rem;
+    padding-bottom: 0;
+}
+
+.city-overview {
+    margin-top: 0;
+}
+
+.headLine {
+    margin: .2rem 0 0;
+}
+
+.headLine p, .itemVal li p {
+    width: 25%;
+}
+
+.wrap ul .areaLi {
+    background: #eefeee;
+    height: .6rem;
+}
+.wrap ul .areaLi:first-child {
+    background: #ffffff;
+}
+.cityArea {
+    background: #ffffff;
+}
+.cityArea p:first-child {
+    height: .6rem;
+    text-align: left;
+    padding-left: 50px;
+    box-sizing: border-box;
+}
+.wrap ul .areaLi:hover {
+    background: #eefeee !important;
+    animation: none !important;
+}
+.wrap ul .areaLi:first-child:hover {
+    background: #ffffff !important;
+}
+/*.wrap ul .areaLi:nth-last-of-type(2):hover {}*/
+.wrap ul .areaLi p:first-child {
+    position: relative;
+    text-align: left;
+    padding-left: 50px;
+    border-right: solid 1px #bbb;
+    box-sizing: border-box;
+}
+.wrap ul .areaLi p:first-child::after {
+    content: '';
+    position: absolute;
+    right: 30%;
+    top: calc(50% - 0.055rem);
+    width: 0;
+    height: 0;
+    border-top: solid .11rem #0DB95F;
+    border-left: solid .11rem transparent;
+    border-right: solid .11rem transparent;
+}
+.wrap ul .areaLi:first-child p:first-child::after,
+.wrap ul .areaLi:nth-last-child(2) p:first-child::after,
+.wrap ul .areaLi:last-child p:first-child::after {
+    content: none;
+}
+.wrap ul .cityLi {
+    background: #ffffff;
+}
+.wrap ul .cityLi p:first-child {
+    text-align: left;
+    padding-left: 100px;
+    box-sizing: border-box;
+}
+.wrap ul .areaLi:hover {
+    background: #97f79e;
+}
+
+.wrap .headLine p:first-child,
+.wrap .itemVal li p:first-child {
+    width: 30%
+}
+.wrap .headLine p:nth-child(2),
+.wrap .headLine p:nth-child(3),
+.wrap .headLine p:nth-child(4),
+.wrap .itemVal li p:nth-child(2),
+.wrap .itemVal li p:nth-child(3),
+.wrap .itemVal li p:nth-child(4) {
+    width: 23.3%
+}
+
+
+li p img {
+    left: 80%;
+}
+
+.kpi-circle .echarts {
+    height: 3rem;
+}
+
+.circle-line, .circledata-line {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.circle-line div {
+    width: 33%;   /* 100% 配合echarts图表有些问题 */
+    height: 1.8rem;
+    text-align: center;
+    margin-top: .3rem;
+}
+.circledata-line>div {
+    width: 100%;  /* 100% 让其自动挤压均匀分配 */
+    height: 1rem;
+    text-align: center;
+    padding-top: .27rem;
+    /*border-right: 1px solid #bbb;*/
+}
+.circledata-line>div:last-child {
+    border-right: initial;
+}
+
+.circledata-line>div p:first-child {
+    height: .5rem;
+    color: #0DB95F;
+    font-size: 0.37rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.circledata-line>div p:last-child {
+    color: #647888;
+    font-size: 0.27rem;
+    line-height: .5rem;
+}
+.circledata-line>div p:last-child span {
+    float: left;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.carType-box {
+    padding-top: .12rem;
+}

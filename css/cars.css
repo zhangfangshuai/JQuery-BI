@@ -1,0 +1,58 @@
+/* offline */
+.offline-head p, .offVal li p {
+    width: 33%;
+    text-align: center;
+}
+
+/* online top 10 city */
+.ttopHead p, .ttopVal li p {
+    width: 23%;
+    text-align: center;
+}
+.ttopHead p:first-child, .ttopVal li p:first-child { width: 15%; }
+.ttopHead p:nth-child(2), .ttopVal li p:nth-child(2) { width: 16%; }
+
+
+/* new version */
+.echarts {
+    height: 4rem;
+}
+/* car base */
+.car-sh, .car-sv {
+    width: 26rem;
+}
+.car-sh p, .car-sv li p { width: 10%; }
+.car-sh p:nth-child(1), .car-sv li p:nth-child(1) { width: 8%; }
+.car-sh p:nth-child(2), .car-sv li p:nth-child(2) { width: 8%; }
+.car-sh p:nth-child(9), .car-sv li p:nth-child(9) { width: 12%; }
+.car-sh p:nth-child(10), .car-sv li p:nth-child(10) { width: 12%; }
+
+/* car timing table */
+.ctt-sh, .ctt-sv {
+    width: 25rem;
+}
+.ctt-sh p, .ctt-sv li p { width: 10%; }
+.ctt-sh p:nth-child(6), .ctt-sv li p:nth-child(6) { width: 11%; }
+.ctt-sh p:nth-child(7), .ctt-sv li p:nth-child(7) { width: 13%; }
+.ctt-sh p:nth-child(8), .ctt-sv li p:nth-child(8) { width: 13%; }
+.ctt-sh p:nth-child(9), .ctt-sv li p:nth-child(9) { width: 13%; }
+
+/* online top */
+.er-sh, .er-sv {
+    width: 11rem;
+}
+.er-sh p, .er-sv li p { width: 22%; }
+.er-sh p:nth-child(1), .er-sv li p:nth-child(1) { width: 19%; }
+.er-sh p:nth-child(2), .er-sv li p:nth-child(2) { width: 20%; }
+.er-sh p:nth-child(5), .er-sv li p:nth-child(5) { width: 17%; }
+
+/* cars clean */
+.clear-fixed-margin {
+    margin-right: 0rem;
+}
+.cc-scroll-box {
+    width: calc(100% - 4.1rem)
+}
+.cc-sh p, .cc-sv li p {
+    width: 1rem;
+}

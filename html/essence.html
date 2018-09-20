@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>驾驶舱-综合分析</title>
+    <meta name="flexible" content="initial-dpr=2,maximum-dpr=3,user-scalable=no" />
+    <script src="../libs/flexible.js"></script>
+    <link rel="stylesheet" href="../css/mobiscroll.custom-2.5.2.min_my.css"/>
+    <link rel="stylesheet" href="../css/LArea.css">
+    <link rel="stylesheet" type="text/css" href="../css/service.css">
+    <link rel="stylesheet" type="text/css" href="../css/essence.css">
+    <script src="../libs/jquery-3.1.1.min.js"></script>
+    <script src="../js/common/config.js"></script>
+    <script src="../js/common/configEnv.js"></script>
+    <script src="../libs/mobiscroll.custom-2.5.2.min.js"></script>
+    <script src="../libs/LArea.js"></script>
+    <script src="../libs/echarts.min.js"></script>
+    <script src='../js/essence/essenceOption.js'></script>
+</head>
+<body>
+    <div class="box">
+        <!-- 导航栏 -->
+        <header class="header clearfix">
+            <div class="slideBtn"></div>
+            <div class="logo"></div>
+            <div class="location">
+                <div class="content-block showCity">
+                    <input id="demo3" type="text" readonly="" onfocus="this.blur();" />
+                    <input id="value3" type="hidden" />
+                </div>
+                <div class="showCityIcon"></div>
+            </div>
+        </header>
+
+        <!-- 城市开城日期悬浮 -->
+        <nav>
+            <p id="opentime"></p>
+        </nav>
+
+        <aside>
+            <p id="dashboard" class="active">D</p>
+            <p id="realtime">实</p>
+            <p id="citystatus">综</p>
+            <p id="weekcomp">周</p>
+            <p id="userinfo">用</p>
+        </aside>
+
+        <section>
+            <div class="snap">
+                <span id="snapDashboard">DASHBOARD</span>
+            </div>
+        </section>
+
+        <section section-id="71">
+            <div class="wrap smallTopGap">
+                <div class="bulge-datePicker">
+                    <div class="monthPicker">
+                        <div class="preMonthBtn db-premonth">上一月</div>
+                        <div class="showMonth">
+                            <input type="text" id="appMonth1" class="appMonth" onfocus="this.blur();">
+                        </div>
+                        <div class="nextMonthBtn db-nextmonth">下一月</div>
+                    </div>
+                </div>
+                <div class="carType-box">
+                    <p class="car-type db-ct active" data-type='0'>全部</p>
+                    <p class="car-type db-ct" data-type='1'>电动车</p>
+                    <p class="car-type db-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="boards">
+                    <p>小Fun在努力查询中,请稍后...</p>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble db-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <section section-id="72">
+            <div class="wrap">
+                <div class="cont-title">团队工龄（月）</div>
+                <div class="team"><span>小Fun在努力查询中,请稍后...</span></div>
+                <div class="pagenation">
+                    <div class="page-pre team-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage team-nowpage">1</span>/<span class="allpage team-allpage">1</span>
+                    </div>
+                    <div class="page-next team-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble team-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="snap bigGap">
+                <span id="snapReal">城市实时运营</span>
+            </div>
+        </section>
+
+        <!-- 实时收现 -->
+        <section section-id="73">
+            <div class="wrap">
+                <div class="flag-title">实时收现</div>
+                <div class="bulge-datePicker">
+                    <div class="singleDatePicker">
+                        <div class="preDateBtn incr-predate">前一天</div>
+                        <div class="showDate">
+                            <input id="appDateTime1" class="appDateTime" onfocus="this.blur();">
+                            <span class="showWeek1"></span>
+                        </div>
+                        <div class="nextDateBtn incr-nextdate">后一天</div>
+                    </div>
+                </div>
+                <div class="carType-box">
+                    <p class="car-type incr-ct active" data-type='0'>全部</p>
+                    <p class="car-type incr-ct" data-type='1'>电车</p>
+                    <p class="car-type incr-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="echarts" id="incrChart"></div>
+                <div class="cont-note incr-notebar"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble incr-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 实时车辆现况 -->
+        <section section-id="74">
+          <div class="wrap car-chart">
+              <div class="flag-title">车辆现况</div>
+              <div class="bulge-datePicker">
+                  <div class="singleDatePicker">
+                      <div class="preDateBtn carr-predate">前一天</div>
+                      <div class="showDate">
+                          <input id="appDateTime2" class="appDateTime" onfocus="this.blur();">
+                          <span class="showWeek2"></span>
+                      </div>
+                      <div class="nextDateBtn carr-nextdate">后一天</div>
+                  </div>
+              </div>
+              <div class="carType-box">
+                  <p class="car-type carr-ct active" data-type='0'>全部</p>
+                  <p class="car-type carr-ct" data-type='1'>电车</p>
+                  <p class="car-type carr-ct" data-type='2'>燃油车</p>
+              </div>
+              <div class="simpleSelection">
+                  <div class="toggleIcon"></div>
+                  <input id="carrtog" class="selectVal" value="全部" readonly="" onfocus="this.blur();"/>
+                  <input id="carrtog-val" type="hidden" />
+              </div>
+              <div class="echarts" id="carrChart"></div>
+              <div class="cont-note carr-notebar"></div>
+              <div class="responsiblePerson-box">
+                  <p class="phoneBubble carr-phoneBubble"><a href=""></a></p>
+                  <p class="responsiblePerson"></p>
+              </div>
+          </div>
+        </section>
+
+        <!-- 实时车辆电量 -->
+        <section section-id="75">
+            <div class="wrap car-battery">
+                <div class="flag-title">车辆续航</div>
+                <div class="bulge-datePicker">
+                    <div class="singleDatePicker">
+                        <div class="preDateBtn cb-predate">前一天</div>
+                        <div class="showDate">
+                            <input id="appDateTime3" class="appDateTime" onfocus="this.blur();">
+                            <span class="showWeek3"></span>
+                        </div>
+                        <div class="nextDateBtn cb-nextdate">后一天</div>
+                    </div>
+                </div>
+                <div class="echarts" id="cbChart"></div>
+                <div class="cont-note cb-notebar"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble cb-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 实时订单 -->
+        <section section-id="76">
+            <div class="wrap order-chart">
+                <div class="flag-title">实时订单</div>
+                <div class="bulge-datePicker">
+                    <div class="singleDatePicker">
+                        <div class="preDateBtn or-predate">前一天</div>
+                        <div class="showDate">
+                            <input id="appDateTime4" class="appDateTime" onfocus="this.blur();">
+                            <span class="showWeek4"></span>
+                        </div>
+                        <div class="nextDateBtn or-nextdate">后一天</div>
+                    </div>
+                </div>
+                <div class="carType-box">
+                    <p class="car-type or-ct active" data-type='0'>全部</p>
+                    <p class="car-type or-ct" data-type='1'>电车</p>
+                    <p class="car-type or-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="echarts" id="orChart"></div>
+                <div class="cont-note or-notebar"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble or-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 实时新增用户 -->
+        <section section-id="77">
+            <div class="wrap newguy-chart">
+                <div class="flag-title">新增用户</div>
+                <div class="bulge-datePicker">
+                    <div class="singleDatePicker">
+                        <div class="preDateBtn ng-predate">前一天</div>
+                        <div class="showDate">
+                            <input id="appDateTime5" class="appDateTime" onfocus="this.blur();">
+                            <span class="showWeek5"></span>
+                        </div>
+                        <div class="nextDateBtn ng-nextdate">后一天</div>
+                    </div>
+                </div>
+                <div class="echarts" id="ngChart"></div>
+                <div class="cont-note ng-notebar"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble ng-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="snap bigGap">
+                <span id="snapColligates">城市综合分析</span>
+            </div>
+        </section>
+
+        <section section-id="78">
+            <div class="wrap city-overview">
+                <div class="cont-title">资产概况</div>
+                <div class="overview-box">
+                    <div class="overview-line">
+                        <div> <p id="car-all"></p> <p>总购置车辆</p> </div>
+                        <div> <p id="car-off"></p> <p>后台车辆</p> </div>
+                        <div> <p id="car-in"></p> <p>可运营车辆</p> </div>
+                    </div>
+                    <div class="overview-line">
+                        <div> <p id="site-all"></p> <p>网点总数</p> </div>
+                        <div> <p id="site-real"></p> <p>实体网点</p> </div>
+                        <div> <p id="site-virtual"></p> <p>虚拟网点</p> </div>
+                    </div>
+                    <div class="overview-line">
+                        <div> <p id="park-all"></p> <p>车位总数</p> </div>
+                        <div> <p id="park-real"></p> <p>实体车位数</p> </div>
+                        <div> <p id="park-virtual"></p> <p>虚拟车位数</p> </div>
+                    </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble cityov-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="nation_kpi" section-id="79">
+            <div class="wrap">
+                <div class="cont-title">KPI考核</div>
+                <div class="headLine" id="nation_kpi_head">
+                    <p>KPI名称</p>
+                    <p>当前值</p>
+                </div>
+                <ul class="itemVal" id="nation_kpi_val">
+                    <div>小Fun正努力查询中...</div>
+                </ul>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble kpiN-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="city_kpi" section-id="92">
+            <div class="wrap">
+                <div class="cont-title">KPI考核 - 车均收现</div>
+                <div class="gauge-line">
+                    <div id="cash-newev"></div>
+                    <div id="cash-oldev"></div>
+                    <div id="cash-oil"></div>
+                </div>
+                <div class="gaugedata-line" id="cashcurrent-line"></div>
+                <div class="gaugedata-line" id="cashgoal-line"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble kpiC_cash-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+        <section class="city_kpi" section-id="93">
+            <div class="wrap clearTopGap">
+                <div class="hook"></div>
+                <div class="cont-title">上架时长 & 违法处理率</div>
+                <div class="gauge-line">
+                    <div id="sheft-newev"></div>
+                    <div id="sheft-oldev"></div>
+                    <div id="sheft-oil"></div>
+                    <div id="law-all"></div>
+                </div>
+                <div class="gaugedata-line" id="sheftcurrent-line"></div>
+                <div class="gaugedata-line" id="sheftgoal-line"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble kpiC_time-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 数据表形式-功能重复 -->
+        <!-- <section class="city_kpi" section-id="91">
+            <div class="wrap">
+                <div class="cont-title">KPI考核</div>
+                <div class="headLine" id="city_kpi_head">
+                    <p>KPI名称</p>
+                    <p>目标值</p>
+                    <p>当前值</p>
+                    <p>完成度</p>
+                </div>
+                <ul class="itemVal" id="city_kpi_val">
+                    <div>小Fun正努力查询中...</div>
+                </ul>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble kpiC-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- 近七日运营效率 -->
+        <section section-id="80">
+            <div class="wrap">
+                <div class="cont-title">运营效率</div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box inline-scroll">
+                        <p class="fixed-header">指标</p>
+                        <ul class="fixed-val" id="effi-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header" id="effi-sh">
+                            <p>今日</p>
+                            <p>昨日</p>
+                            <p>上周同期</p>
+                            <p>上周环比</p>
+                        </div>
+                        <ul class="scroll-val" id="effi-sv"></ul>
+                    </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble effi-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="chartsCtrl">
+            <div class="wrap chartsCtrl">
+                <div class="cont-title">城市指标 周对比视图</div>
+                <div class="singleDatePicker">
+                    <div class="preDateBtn week-predate">上一周</div>
+                    <div class="showDate">
+                        <input id="appDateTime99" class="appDateTime" onfocus="this.blur();">
+                        <span class="showWeek99"></span>
+                    </div>
+                    <div class="nextDateBtn week-nextdate">下一周</div>
+                </div>
+            </div>
+        </section>
+        <section section-id="81">
+            <div class="wrap clearTopGap">
+                <div class="hook"></div>
+                <div class="cont-title">收入</div>
+                <div class="echarts" id="income"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble week_inc-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <section section-id="82">
+            <div class="wrap clearTopGap">
+                <div class="hook"></div>
+                <div class="cont-title">收现</div>
+                <div class="echarts" id="cash"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble week_cash-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <section section-id="83">
+            <div class="wrap clearTopGap">
+                <div class="hook"></div>
+                <div class="cont-title">车均单</div>
+                <div class="echarts" id="carorder"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble week_co-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <section section-id="84">
+            <div class="wrap clearTopGap">
+                <div class="hook"></div>
+                <div class="cont-title">车均收现</div>
+                <div class="echarts" id="carcash"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble week_cc-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <section section-id="85">
+            <div class="wrap clearTopGap">
+                <div class="hook"></div>
+                <div class="cont-title">单均收现</div>
+                <div class="echarts" id="ordercash"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble week_oc-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <section section-id="86">
+            <div class="wrap clearTopGap">
+                <div class="hook"></div>
+                <div class="cont-title">取车单</div>
+                <div class="echarts" id="usecar"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble week_uc-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <section section-id="87">
+            <div class="wrap clearTopGap">
+                <div class="hook"></div>
+                <div class="cont-title">上架时长</div>
+                <div class="echarts" id="caronline"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble week_ol-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 用户转化漏斗图 -->
+        <section id="userInfo" section-id="88">
+            <div class="wrap">
+                <div class="cont-title">用户漏斗分析</div>
+                <div class="echarts-funnel" id="ut-funnel"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble utf-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 近七日用户分析 -->
+        <section section-id="89">
+            <div class="wrap">
+                <div class="cont-title">近七日用户分析</div>
+                <div class="singleDatePicker">
+                    <div class="preDateBtn user-predate">前一天</div>
+                    <div class="showDate">
+                        <input id="appDateTime17" class="appDateTime" onfocus="this.blur();">
+                        <span class="showWeek17"></span>
+                    </div>
+                    <div class="nextDateBtn user-nextdate">后一天</div>
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box inline-scroll">
+                        <p class="fixed-header">类型</p>
+                        <ul class="fixed-val" id="user-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header" id="user-sh">
+                            <p>小Fun正在努力检索中...</p>
+                            <p></p>
+                        </div>
+                        <ul class="scroll-val" id="user-sv"></ul>
+                    </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble utt-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 用户留存 -->
+        <section section-id="90">
+            <div class="wrap">
+                <div class="cont-title">近七日用户留存</div>
+                <div class="singleDatePicker">
+                    <div class="preDateBtn rt-predate">前一天</div>
+                    <div class="showDate">
+                        <input id="appDateTime18" class="appDateTime" onfocus="this.blur();">
+                        <span class="showWeek18"></span>
+                    </div>
+                    <div class="nextDateBtn rt-nextdate">后一天</div>
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box inline-scroll">
+                        <p class="fixed-header">指标</p>
+                        <ul class="fixed-val" id="rt-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header" id="rt-sh">
+                            <p>小Fun正在努力检索中...</p>
+                            <p></p>
+                        </div>
+                        <ul class="scroll-val" id="rt-sv"></ul>
+                    </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble rt-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+<script src='../js/common/biMonitor.js'></script>
+</html>

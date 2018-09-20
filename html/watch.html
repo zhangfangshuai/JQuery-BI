@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>驾驶舱-实时监控</title>
+    <meta name="flexible" content="initial-dpr=2,maximum-dpr=3,user-scalable=no" />
+    <script src="../libs/flexible.js"></script>
+    <link rel="stylesheet" href="../css/mobiscroll.custom-2.5.2.min_my.css"/>
+    <link rel="stylesheet" href="../css/LArea.css">
+    <link rel="stylesheet" type="text/css" href="../css/service.css">
+    <link rel="stylesheet" type="text/css" href="../css/watch.css">
+    <script src="../libs/jquery-3.1.1.min.js"></script>
+    <script src="../js/common/config.js"></script>
+    <script src="../js/common/configEnv.js"></script>
+    <script src="../libs/mobiscroll.custom-2.5.2.min.js"></script>
+    <script src="../libs/LArea.js"></script>
+    <script src="../libs/echarts.min.js"></script>
+    <script src="../js/watch/watchOption.js"></script>
+</head>
+<body>
+    <div class="box">
+        <!--导航栏 navbar -->
+        <header class="header clearfix">
+            <div class="slideBtn"></div>
+            <div class="logo"></div>
+            <div class="location">
+                <div class="content-block showCity">
+                    <input id="demo3" type="text" readonly="" onfocus="this.blur();" />
+                    <input id="value3" type="hidden" />
+                </div>
+                <div class="showCityIcon"></div>
+            </div>
+        </header>
+
+        <!-- 实时收现 -->
+        <section class="section-box">
+            <div class="wrap income-chart clearTopGap-watch">
+                <div class="flag-title">实时收现</div>
+                <div class="bulge-datePicker">
+                    <div class="singleDatePicker">
+                        <div class="preDateBtn incr-predate">前一天</div>
+                        <div class="showDate">
+                            <input id="appDateTime3" class="appDateTime" onfocus="this.blur();">
+                            <span class="showWeek3"></span>
+                        </div>
+                        <div class="nextDateBtn incr-nextdate">后一天</div>
+                    </div>
+                </div>
+                <div class="carType-box">
+                    <p class="car-type incr-ct active" data-type='0'>全部</p>
+                    <p class="car-type incr-ct" data-type='1'>电车</p>
+                    <p class="car-type incr-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="echarts" id="incrChart"></div>
+            </div>
+        </section>
+        <section class="section-box" section-id="1">
+            <div class="wrap income-table clearTopGap">
+                <div class="hook"></div>
+                <div class="cont-title">实时营收概况</div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">时刻</p>
+                        <ul class="fixed-val ir-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header ir-sh">
+                            <p>累计收入</p>
+                            <p>累计收现</p>
+                            <p>累计优惠</p>
+                            <p>累计未结算</p>
+                            <p>单均收入</p>
+                            <p>单均收现</p>
+                            <p>单均优惠</p>
+                            <p>单均未结算</p>
+                        </div>
+                        <ul class="scroll-val ir-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre incrtable-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage incrtable-nowpage">1</span>/<span class="allpage incrtable-allpage">1</span>
+                    </div>
+                    <div class="page-next incrtable-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble incrtable-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 车辆现况 -->
+        <section class="section-box">
+          <div class="wrap car-chart">
+              <div class="flag-title">车辆现况</div>
+              <div class="bulge-datePicker">
+                  <div class="singleDatePicker">
+                      <div class="preDateBtn carr-predate">前一天</div>
+                      <div class="showDate">
+                          <input id="appDateTime1" class="appDateTime" onfocus="this.blur();">
+                          <span class="showWeek1"></span>
+                      </div>
+                      <div class="nextDateBtn carr-nextdate">后一天</div>
+                  </div>
+              </div>
+              <div class="carType-box">
+                  <p class="car-type carr-ct active" data-type='0'>全部</p>
+                  <p class="car-type carr-ct" data-type='1'>电车</p>
+                  <p class="car-type carr-ct" data-type='2'>燃油车</p>
+              </div>
+              <div class="simpleSelection">
+                  <div class="toggleIcon"></div>
+                  <input id="carrtog" class="selectVal" value="全部" readonly="" onfocus="this.blur();"/>
+                  <input id="carrtog-val" type="hidden" />
+              </div>
+              <div class="echarts" id="carrChart"></div>
+              <div class="cont-note carr-notebar"></div>
+          </div>
+        </section>
+        <section class="section-box" section-id="2">
+            <div class="wrap car-table clearTopGap">
+                <div class="hook"></div>
+                <div class="cont-title">实时车辆状况</div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">时刻</p>
+                        <ul class="fixed-val cr-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header cr-sh">
+                            <!-- <p>整备中</p> -->
+                            <p>待租</p>
+                            <p>已预订</p>
+                            <p>服务中-未取车</p>
+                            <p>服务中-已取车</p>
+                            <p>运维中</p>
+                            <p>维修中</p>
+                            <p>事故出险</p>
+                            <p>物料缺失</p>
+                            <p>车机离线</p>
+                            <p>低电下架</p>
+                            <p>其他原因</p>
+                            <p>停止运营</p>
+                        </div>
+                        <ul class="scroll-val cr-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre carr-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage carr-nowpage">1</span>/<span class="allpage carr-allpage">1</span>
+                    </div>
+                    <div class="page-next carr-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble carr-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 实时订单 -->
+        <section class="section-box">
+            <div class="wrap order-chart">
+                <div class="flag-title">实时订单</div>
+                <div class="bulge-datePicker">
+                    <div class="singleDatePicker">
+                        <div class="preDateBtn or-predate">前一天</div>
+                        <div class="showDate">
+                            <input id="appDateTime2" class="appDateTime" onfocus="this.blur();">
+                            <span class="showWeek2"></span>
+                        </div>
+                        <div class="nextDateBtn or-nextdate">后一天</div>
+                    </div>
+                </div>
+                <div class="carType-box">
+                    <p class="car-type or-ct active" data-type='0'>全部</p>
+                    <p class="car-type or-ct" data-type='1'>电车</p>
+                    <p class="car-type or-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="echarts" id="orChart"></div>
+                <div class="cont-note or-notebar"></div>
+            </div>
+        </section>
+        <section class="section-box" section-id="4">
+            <div class="wrap order-table clearTopGap">
+                <div class="hook"></div>
+                <div class="cont-title">实时订单</div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">时刻</p>
+                        <ul class="fixed-val or-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header or-sh">
+                            <p>累计订单</p>
+                            <p>累计取车订单</p>
+                            <p>累计取消订单</p>
+                            <p>订单</p>
+                            <p>取车订单</p>
+                            <p>取消订单</p>
+                            <p>车均单</p>
+                            <p>单均里程</p>
+                            <p>单均时长</p>
+                        </div>
+                        <ul class="scroll-val or-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre or-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage or-nowpage">1</span>/<span class="allpage or-allpage">1</span>
+                    </div>
+                    <div class="page-next or-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble or-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 实时新增用户 -->
+        <section class="section-box">
+            <div class="wrap newguy-chart">
+                <div class="flag-title">新增用户</div>
+                <div class="bulge-datePicker">
+                    <div class="singleDatePicker">
+                        <div class="preDateBtn ng-predate">前一天</div>
+                        <div class="showDate">
+                            <input id="appDateTime4" class="appDateTime" onfocus="this.blur();">
+                            <span class="showWeek4"></span>
+                        </div>
+                        <div class="nextDateBtn ng-nextdate">后一天</div>
+                    </div>
+                </div>
+                <div class="echarts" id="ngChart"></div>
+                <div class="cont-note ng-notebar"></div>
+            </div>
+        </section>
+        <section class="section-box" section-id="5">
+            <div class="wrap newguy-table clearTopGap">
+                <div class="hook"></div>
+                <div class="cont-title">实时新增用户</div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">时刻</p>
+                        <ul class="fixed-val ng-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header ng-sh">
+                            <p>新增注册用户</p>
+                            <p>新增双证用户</p>
+                            <p>新增可用车用户</p>
+                            <p>新增下单用户</p>
+                            <p>新增首单用户</p>
+                        </div>
+                        <ul class="scroll-val ng-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre ng-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage ng-nowpage">1</span>/<span class="allpage ng-allpage">1</span>
+                    </div>
+                    <div class="page-next ng-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble ng-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 实时车辆电量 -->
+        <section class="section-box" section-id="3">
+            <div class="wrap car-battery">
+                <div class="flag-title">车辆续航</div>
+                <div class="bulge-datePicker">
+                    <div class="singleDatePicker">
+                        <div class="preDateBtn cb-predate">前一天</div>
+                        <div class="showDate">
+                            <input id="appDateTime5" class="appDateTime" onfocus="this.blur();">
+                            <span class="showWeek5"></span>
+                        </div>
+                        <div class="nextDateBtn cb-nextdate">后一天</div>
+                    </div>
+                </div>
+                <div class="echarts" id="cbChart"></div>
+                <div class="cont-note cb-notebar"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble cb-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src='../js/common/biMonitor.js'></script>
+</body>
+</html>

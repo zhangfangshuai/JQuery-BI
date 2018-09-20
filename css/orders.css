@@ -1,0 +1,36 @@
+.simpleSelection {
+    width: 2rem;
+    right: .8rem;
+}
+.simpleSelection .toggleIcon {
+    right: -12%;
+}
+.simpleSelection input {
+    width: 100%;
+}
+.echarts {
+    height: 6rem;
+}
+
+/* order warning */
+.odw p, .odwVal li p {
+    width: 25%;
+}
+
+/* order base */
+.od-sh, .od-sv {
+    width: 10rem;
+}
+.od-sh p, .od-sv li p { width: 21%; }
+.od-sh p:nth-child(1), .od-sv li p:nth-child(1) { width: 18.5%; }
+.od-sh p:nth-child(3), .od-sv li p:nth-child(3) { width: 18.5%; }
+
+/* order history */
+.oh-sh, .oh-sv {
+    width: 12.5rem;
+}
+.oh-sh p, .oh-sv li p { width: 13%; }
+.oh-sh p:nth-child(1), .oh-sv li p:nth-child(1) { width: 12%; }
+.oh-sh p:nth-child(2), .oh-sv li p:nth-child(2) { width: 12%; }
+.oh-sh p:nth-child(3), .oh-sv li p:nth-child(3) { width: 12%; }
+.oh-sh p:nth-child(4), .oh-sv li p:nth-child(4) { width: 12%; }

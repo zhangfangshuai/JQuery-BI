@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="flexible" content="initial-dpr=2,maximum-dpr=3,user-scalable=no" />
+    <title>驾驶舱-APP</title>
+    <script src="../libs/flexible.js"></script>
+    <link rel="stylesheet" href="../css/mobiscroll.custom-2.5.2.min_my.css"/>
+    <link rel="stylesheet" href="../css/LArea.css">
+    <link rel="stylesheet" type="text/css" href="../css/service.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+    <script src="../libs/jquery-3.1.1.min.js"></script>
+    <script src="../js/common/config.js"></script>
+    <script src="../js/common/configEnv.js"></script>
+    <script src="../libs/mobiscroll.custom-2.5.2.min.js"></script>
+    <script src="../libs/LArea.js"></script>
+    <script src="../libs/echarts.min.js"></script>
+    <script src="../js/app/appOption.js"></script>
+</head>
+<body>
+    <div class="box">
+        <!-- 导航栏 -->
+        <header class="header clearfix">
+            <div class="slideBtn"></div>
+            <div class="logo"></div>
+            <div class="location">
+                <div class="content-block showCity">
+                    <input id="demo3" readonly="" onfocus="this.blur();" />
+                    <input id="value3" type="hidden" />
+                </div>
+                <div class="showCityIcon"></div>
+            </div>
+        </header>
+
+        <!-- DAU漏斗 -->
+        <section class="section-box">
+            <div class="wrap dau-open-funnel clearTopGap">
+                <div class="cont-title">DAU漏斗
+                    <div class="simpleSelection">
+                        <div class="toggleIcon"></div>
+                        <input id="dauf" class="selectVal" value="全部" readonly="" onfocus="this.blur();"/>
+                        <input id="dauf-val" type="hidden" />
+                    </div>
+                </div>
+                <div class="twoGroups">
+                    <div class="set dauf-set active" data="1">安卓</div>
+                    <div class="set dauf-set" data="0">IOS</div>
+                    <div class="set dauf-set" data="">全部</div>
+                </div>
+                <div class="singleDatePicker">
+                    <div class="preDateBtn dauf-predate">前一天</div>
+                    <div class="showDate">
+                        <input type="text" id="appDateTime6" class="appDateTime" onfocus="this.blur();">
+                        <span class="showWeek6"></span>
+                    </div>
+                    <div class="nextDateBtn dauf-nextdate">后一天</div>
+                </div>
+                <div class="echarts ec-open" id="dauOpenFunnel"></div>
+            </div>
+        </section>
+        <!-- DAU漏斗(接上图) -->
+        <section class="section-box">
+            <div class="wrap dau-start-funnel">
+                <div class="echarts ec-start" id="dauStartFunnel"></div>
+            </div>
+        </section>
+
+        <!-- DAU统计报表 -->
+        <section class="section-box">
+            <div class="wrap dauTable">
+                <div class="cont-title">DAU人数统计
+                    <div class="simpleSelection">
+                        <div class="toggleIcon"></div>
+                        <input id="dauT" class="selectVal" value="全部" readonly="" onfocus="this.blur();"/>
+                        <input id="dauT-val" type="hidden" />
+                    </div>
+                </div>
+                <div class="twoGroups">
+                    <div class="set dauT-set active" data="1">安卓</div>
+                    <div class="set dauT-set" data="0">IOS</div>
+                    <div class="set dauT-set" data="">全部</div>
+                </div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime1" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime2" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val dauT-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header dauT-sh">
+                            <p>APP启动人数</p>
+                            <p>点击取车网点</p>
+                            <p>点击还车网点</p>
+                            <p>点击预约车辆</p>
+                        </div>
+                        <ul class="scroll-val dauT-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre dauT-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage dauT-nowpage">1</span>/<span class="allpage dauT-allpage">1</span>
+                    </div>
+                    <div class="page-next dauT-nextpage"> > </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 不同类型用户启动APP报表 -->
+        <section class="section-box">
+            <div class="wrap diffUserStart">
+                <div class="cont-title">不同类型用户启动APP人数
+                    <div class="simpleSelection">
+                        <div class="toggleIcon"></div>
+                        <input id="dur" class="selectVal" value="全部" readonly="" onfocus="this.blur();"/>
+                        <input id="dur-val" type="hidden" />
+                    </div>
+                </div>
+                <div class="twoGroups">
+                    <div class="set dur-set active" data="1">安卓</div>
+                    <div class="set dur-set" data="0">IOS</div>
+                    <div class="set dur-set" data="">全部</div>
+                </div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime3" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime4" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val dur-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header dur-sh">
+                            <p>注册用户启动</p>
+                            <p>双证用户启动</p>
+                            <p>可用车用户启动</p>
+                        </div>
+                        <ul class="scroll-val dur-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre dur-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage dur-nowpage">1</span>/<span class="allpage dur-allpage">1</span>
+                    </div>
+                    <div class="page-next dur-nextpage"> > </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 不同城市对比 -->
+        <section class="section-box">
+            <div class="wrap diffCity">
+                <div class="cont-title">不同城市对比</div>
+                <div class="singleDatePicker">
+                    <div class="preDateBtn dc-predate">前一天</div>
+                    <div class="showDate">
+                        <input type="text" id="appDateTime5" class="appDateTime" onfocus="this.blur();">
+                        <span class="showWeek5"></span>
+                    </div>
+                    <div class="nextDateBtn dc-nextdate">后一天</div>
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box inline-scroll">
+                        <p class="fixed-header">城市</p>
+                        <ul class="fixed-val dc-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header dc-sh">
+                            <p>DAU人数</p>
+                            <p>可用车用户数</p>
+                            <p>可用车打开APP人数</p>
+                            <p>可用车用户占比</p>
+                            <p>点击取车网点人数</p>
+                            <p>点击还车网点人数</p>
+                            <p>点击预定车辆人数</p>
+                            <p>订单转化率</p>
+                        </div>
+                        <ul class="scroll-val dc-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre dc-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage dc-nowpage">1</span>/<span class="allpage dc-allpage">1</span>
+                    </div>
+                    <div class="page-next dc-nextpage"> > </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src='../js/common/biMonitor.js'></script>
+</body>
+</html>

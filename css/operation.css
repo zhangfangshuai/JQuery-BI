@@ -1,0 +1,93 @@
+/**
+ * Created with Atom.
+ * Author: zhangfs
+ * Date: 2018/03/25
+ * Time: 11:20
+ */
+
+.acdBubble {
+    position: absolute;
+    top: .3rem;
+    left: 5.8rem;
+    width: 1.35rem;
+    height: .5rem;
+    line-height: .5rem;
+    color: #ffffff;
+    font-size: .3rem;
+    background-color: #0DB95F;
+    border-radius: .1rem;
+}
+
+.acdBubble:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -.41rem;
+    width: 0px;
+    height: 0px;
+    border-left: solid .25rem transparent;
+    border-top: solid .35rem transparent;
+    border-bottom: solid .1rem transparent;
+    border-right: solid .3rem #0DB95F;
+}
+
+/**
+ * new version
+ * Date: 2018/08/07
+ **/
+
+/* accidents */
+.adt-sh, .adt-sv {
+    width: 14rem;
+}
+.adt-sh p:nth-child(1), .adt-sv li p:nth-child(1) { width: 15%; }
+.adt-sh p:nth-child(2), .adt-sv li p:nth-child(2) { width: 16%; }
+.adt-sh p:nth-child(3), .adt-sv li p:nth-child(3) { width: 24%; }
+.adt-sh p:nth-child(4), .adt-sv li p:nth-child(4) { width: 20%; }
+.adt-sh p:nth-child(5), .adt-sv li p:nth-child(5) { width: 25%; }
+
+/* peccancy */
+.pec-sh, .pec-sv {
+    width: 11.5rem;
+}
+.pec-sh p, .pec-sv li p { width: 21%; }
+.pec-sh p:nth-child(3), .pec-sv li p:nth-child(3) { width: 16%; }
+
+/* peccancy detial */
+.pd-sh, .pd-sv {
+    width: 10.5rem;
+}
+.pd-sh p, .pd-sv li p { width: 17%; }
+.pd-sh p:nth-child(2), .pd-sv li p:nth-child(2) { width: 20%; }
+.pd-sh p:nth-child(5), .pd-sv li p:nth-child(5) { width: 12%; }
+
+/* park law */
+.pl-sh, .pl-sv {
+    width: 9rem;
+}
+.pl-sh p, .pl-sv li p { width: 20%; }
+.pl-sh p:nth-child(2), .pl-sv li p:nth-child(2) { width: 22%; }
+.pl-sh p:nth-child(4), .pl-sv li p:nth-child(4) { width: 19%; }
+.pl-sh p:nth-child(5), .pl-sv li p:nth-child(5) { width: 19%; }
+
+/* law data */
+.ld-sh, .ld-sv {
+    width: 50rem;
+}
+.ld-sh p, .ld-sv li p { width: 5.3%; }
+.ld-sh p:nth-child(1), .ld-sv li p:nth-child(1) { width: 4.7%; }
+.ld-sh p:nth-child(4), .ld-sv li p:nth-child(4) { width: 7%; }
+.ld-sh p:nth-child(5), .ld-sv li p:nth-child(5) { width: 9%; }
+.ld-sh p:nth-child(6), .ld-sv li p:nth-child(6) { width: 7.5%; }
+.ld-sh p:nth-child(7), .ld-sv li p:nth-child(7) { width: 4.8%; }
+.ld-sh p:nth-child(8), .ld-sv li p:nth-child(8) { width: 7.5%; }
+.ld-sh p:nth-child(9), .ld-sv li p:nth-child(9) { width: 7.5%; }
+.ld-sh p:nth-child(11), .ld-sv li p:nth-child(11) { width: 7.5%; }
+.ld-sh p:nth-child(12), .ld-sv li p:nth-child(12) { width: 7.5%; }
+
+/* push money */
+.pm-sh, .pm-sv {
+    width: 11.3rem;
+}
+.pm-sh p, .pm-sv li p { width: 18%; }
+.pm-sh p:nth-child(1), .pm-sv li p:nth-child(1) { width: 28%; }

@@ -1,0 +1,45 @@
+.site p:first-child, .siteVal li p:first-child { width: 23%; }
+.site p:nth-child(4), .siteVal li p:nth-child(4) { width: 19%; }
+.site p:nth-child(5), .siteVal li p:nth-child(5) { width: 18%; }
+
+
+.schange p:first-child, .changeVal li p:first-child { width: 25%; }
+.schange p:nth-child(3), .changeVal li p:nth-child(3) { width: 18%; }
+.schange p:nth-child(4), .changeVal li p:nth-child(4) { width: 19%; }
+.schange p:nth-child(5), .changeVal li p:nth-child(5) { width: 18%; }
+
+
+/* site detail */
+.sd-sh, .sd-sv {
+    width: 14rem;
+}
+.sd-sh p, .sd-sv li p { width: 18%; }
+.sd-sh p:nth-child(1), .sd-sv li p:nth-child(1) { width: 13%; }
+.sd-sh p:nth-child(2), .sd-sv li p:nth-child(2) { width: 14%; }
+.sd-sh p:nth-child(6), .sd-sv li p:nth-child(6) { width: 15%; }
+
+/* site car */
+.sc-sh, .sc-sv {
+    width: 16rem;
+}
+.sc-sh p, .sc-sv li p { width: 12%; }
+.sc-sh p:nth-child(3), .sc-sv li p:nth-child(3) { width: 13%; }
+.sc-sh p:nth-child(8), .sc-sv li p:nth-child(8) { width: 15%; }
+
+/* site order */
+.so-sh, .so-sv {
+    width: 32rem;
+}
+.so-sh p, .so-sv li p { width: 7%; }
+.so-sh p:nth-child(1), .so-sv li p:nth-child(1) { width: 8%; }
+.so-sh p:nth-child(2), .so-sv li p:nth-child(2) { width: 5%; }
+.so-sh p:nth-child(3), .so-sv li p:nth-child(3) { width: 4%; }
+.so-sh p:nth-child(4), .so-sv li p:nth-child(4) { width: 4%; }
+.so-sh p:nth-child(5), .so-sv li p:nth-child(5) { width: 4%; }
+.so-sh p:nth-child(10), .so-sv li p:nth-child(10) { width: 5%; }
+.so-sh p:nth-child(11), .so-sv li p:nth-child(11) { width: 5%; }
+.so-sh p:nth-child(12), .so-sv li p:nth-child(12) { width: 5%; }
+.so-sh p:nth-child(13), .so-sv li p:nth-child(13) { width: 4%; }
+.so-sh p:nth-child(14), .so-sv li p:nth-child(14) { width: 4%; }
+.so-sh p:nth-child(15), .so-sv li p:nth-child(15) { width: 8%; }
+.so-sh p:nth-child(16), .so-sv li p:nth-child(16) { width: 8%; }

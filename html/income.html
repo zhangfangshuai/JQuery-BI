@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="flexible" content="initial-dpr=2,maximum-dpr=3,user-scalable=no" />
+    <title>驾驶舱-营收</title>
+    <script src="../libs/flexible.js"></script>
+    <link rel="stylesheet" href="../css/mobiscroll.custom-2.5.2.min_my.css"/>
+    <link rel="stylesheet" href="../css/LArea.css">
+    <link rel="stylesheet" type="text/css" href="../css/service.css">
+    <link rel="stylesheet" type="text/css" href="../css/income.css">
+    <script src="../libs/jquery-3.1.1.min.js"></script>
+    <script src="../js/common/configEnv.js"></script>
+    <script src="../js/common/config.js"></script>
+    <script src="../libs/echarts.min.js"></script>
+    <script src="../libs/mobiscroll.custom-2.5.2.min.js"></script>
+    <script src="../libs/LArea.js"></script>
+</head>
+<body>
+    <div class="box">
+        <!-- 导航栏 -->
+        <header class="header clearfix">
+            <div class="slideBtn"></div>
+            <div class="logo"></div>
+            <div class="location">
+                <div class="content-block showCity">
+                    <input id="demo3" type="text" readonly="" onfocus="this.blur();" />
+                    <input id="value3" type="hidden" />
+                </div>
+                <div class="showCityIcon"></div>
+            </div>
+        </header>
+
+        <!--营收概况-->
+        <section class="income section-box" section-id="58">
+            <div class="wrap inc clearTopGap">
+                <div class="cont-title">营收概况</div>
+                <div class="carType-box">
+                    <p class="car-type inc-ct active" data-type='0'>全部</p>
+                    <p class="car-type inc-ct" data-type='1'>电车</p>
+                    <p class="car-type inc-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="singleDatePicker">
+                    <div class="preDateBtn inc-predate">前一天</div>
+                    <div class="showDate">
+                        <input type="text" id="appDateTime1" class="appDateTime" onfocus="this.blur();">
+                        <span class="showWeek1"></span>
+                    </div>
+                    <div class="nextDateBtn inc-nextdate">后一天</div>
+                </div>
+                <div class="headLine">
+                    <p>指标名称</p>
+                    <p>昨日</p>
+                    <p>前日</p>
+                    <p>同比</p>
+                    <p>同比增幅</p>
+                </div>
+                <ul class="itemVal incVal"></ul>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble inc-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!--用户充值-->
+        <seciton class="recharge section-box" section-id="59">
+            <div class="wrap">
+                <div class="cont-title">用户充值</div>
+                <div class="threeColumnSelection">
+                    <div class="tcs col-1 active" base="0">500元以下</div>
+                    <div class="tcs col-2" base="1">500元以上</div>
+                    <div class="tcs col-3" base="2">合计</div>
+                </div>
+                <div class="doubleDatePicker">
+                    开始<input id="appDateTime2" class="ddp-1" onfocus="this.blur();">
+                    结束<input id="appDateTime3" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val recg-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header recg-sh">
+                            <p>用户数 </p>
+                            <p>次数</p>
+                            <p>平均充值金额</p>
+                            <p>充值金额</p>
+                            <p>消费金额</p>
+                        </div>
+                        <ul class="scroll-val recg-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre inc-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage inc-nowpage">1</span>/<span class="allpage inc-allpage">1</span>
+                    </div>
+                    <div class="page-next inc-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble recg-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-box">
+            <div class="wrap">
+                <div class="cont-title">历史营收分析</div>
+                <div class="carType-box">
+                    <p class="car-type inch-ct active" data-type='0'>全部</p>
+                    <p class="car-type inch-ct" data-type='1'>电车</p>
+                    <p class="car-type inch-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="doubleDatePicker">
+                    开始<input id="appDateTime4" class="ddp-1" onfocus="this.blur();">
+                    结束<input id="appDateTime5" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val inch-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header inch-sh">
+                            <p>收现</p>
+                            <p>收入</p>
+                            <p>优惠</p>
+                            <p>未结算</p>
+                            <p>累计未结算</p>
+                        </div>
+                        <ul class="scroll-val inch-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre inch-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage inch-nowpage">1</span>/<span class="allpage inch-allpage">1</span>
+                    </div>
+                    <div class="page-next inch-nextpage"> > </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-box">
+            <div class="wrap">
+                <div class="cont-title">未结算金额分析</div>
+                <div class="carType-box">
+                    <p class="car-type us-ct active" data-type='0'>全部</p>
+                    <p class="car-type us-ct" data-type='1'>电车</p>
+                    <p class="car-type us-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="doubleDatePicker">
+                    开始<input id="appDateTime6" class="ddp-1" onfocus="this.blur();">
+                    结束<input id="appDateTime7" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val us-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header us-sh">
+                            <p>累计未结算</p>
+                            <p>未结算用户数</p>
+                            <p>老用户未结算</p>
+                            <p>新用户未结算</p>
+                            <p>押金用户未结算</p>
+                            <p>芝麻免密未结算</p>
+                        </div>
+                        <ul class="scroll-val us-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre us-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage us-nowpage">1</span>/<span class="allpage us-allpage">1</span>
+                    </div>
+                    <div class="page-next us-nextpage"> > </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src='../js/common/biMonitor.js'></script>
+</body>
+</html>

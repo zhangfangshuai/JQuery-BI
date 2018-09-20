@@ -1,0 +1,36 @@
+/**
+ * Created: zhangfs by Atom.
+ * Date: 2018/03/22 10:10
+ */
+li p img {
+    left: 82%;
+}
+
+/* user recharge*/
+.recg-sh, .recg-sv {
+    width: 9rem;
+}
+.recg-sh p, .recg-sv li p { width: 20%; }
+.recg-sh p:nth-child(1), .recg-sv li p:nth-child(1) { width: 18%; }
+.recg-sh p:nth-child(2), .recg-sv li p:nth-child(2) { width: 16%; }
+.recg-sh p:nth-child(3), .recg-sv li p:nth-child(3) { width: 26%; }
+
+/* incomeHistory  */
+.inch-sh, .inch-sv {
+    width: 10rem;
+}
+.inch-sh p, .inch-sv li p  { width: 18%; }
+.inch-sh p:nth-child(4), .inch-sv li p:nth-child(4) { width: 20%; }
+.inch-sh p:nth-child(5), .inch-sv li p:nth-child(5) { width: 26%; }
+
+/* unsettled */
+.us-sh, .us-sv {
+    width: 16rem;
+}
+.us-sh p, .us-sv li p { width: 16%; }
+.us-sh p:nth-child(5), .us-sv li p:nth-child(5) { width: 18%; }
+.us-sh p:nth-child(6), .us-sv li p:nth-child(6) { width: 18%; }
+
+
+
+/* TODO*/

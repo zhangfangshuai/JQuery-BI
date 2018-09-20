@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="flexible" content="initial-dpr=2,maximum-dpr=3,user-scalable=no" />
+    <!-- <meta name="viewport" content="width=device-width, viewport-fit=cover" /> -->
+    <title>驾驶舱-运营</title>
+    <script src="../libs/flexible.js"></script>
+    <link rel="stylesheet" href="../css/mobiscroll.custom-2.5.2.min_my.css"/>
+    <link rel="stylesheet" href="../css/LArea.css">
+    <link rel="stylesheet" type="text/css" href="../css/service.css">
+    <link rel="stylesheet" type="text/css" href="../css/operation.css">
+    <script src="../libs/jquery-3.1.1.min.js"></script>
+    <script src="../js/common/config.js"></script>
+    <script src="../js/common/configEnv.js"></script>
+    <script src="../libs/mobiscroll.custom-2.5.2.min.js"></script>
+    <script src="../libs/LArea.js"></script>
+    <script src="../libs/echarts.min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <!-- 导航栏 -->
+        <header class="header clearfix">
+            <div class="slideBtn"></div>
+            <div class="logo"></div>
+            <div class="location">
+                <div class="content-block showCity">
+                    <input id="demo3" type="text" readonly="" onfocus="this.blur();" />
+                    <input id="value3" type="hidden" />
+                </div>
+                <div class="showCityIcon"></div>
+            </div>
+        </header>
+
+        <!--保险/事故 -->
+        <section class="section-box" section-id="53">
+            <div class="wrap clearTopGap">
+                <div class="cont-title">保险/事故概况</div>
+                <div class="carType-box">
+                    <p class="car-type adt-ct active" data-type='0'>全部</p>
+                    <p class="car-type adt-ct" data-type='1'>电车</p>
+                    <p class="car-type adt-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime6" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime7" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val adt-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header adt-sh">
+                            <p>出险次数</p>
+                            <p>订单出险率</p>
+                            <p>不计免赔收费金额</p>
+                            <p>不计免赔购买率</p>
+                            <p>购买不计免赔出险率</p>
+                        </div>
+                        <ul class="scroll-val adt-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre adt-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage adt-nowpage">1</span>/<span class="allpage adt-allpage">1</span>
+                    </div>
+                    <div class="page-next adt-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble acd-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!--违法概况 -->
+        <section class="section-box" section-id="55">
+            <div class="wrap peccancy">
+                <div class="cont-title">违法概况</div>
+                <div class="carType-box">
+                    <p class="car-type pec-ct active" data-type='0'>全部</p>
+                    <p class="car-type pec-ct" data-type='1'>电车</p>
+                    <p class="car-type pec-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="doubleDatePicker">
+                  开始<input type="text" id="appDateTime2" class="ddp-1" onfocus="this.blur();">
+                  结束<input type="text" id="appDateTime3" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val pec-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header pec-sh">
+                            <p>累计违法订单</p>
+                            <p>单均违法次数</p>
+                            <p>违法率</p>
+                            <p>未处理违法</p>
+                            <p>平均处理天数</p>
+                        </div>
+                        <ul class="scroll-val pec-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre pec-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage pec-nowpage">1</span>/<span class="allpage pec-allpage">1</span>
+                    </div>
+                    <div class="page-next pec-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble pec-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 车辆违法详情 -->
+        <section class="section-box" section-id="56">
+            <div class="wrap">
+                <div class="cont-title">车辆违法详情</div>
+                <div class="carType-box">
+                    <p class="car-type pd-ct active" data-type='0'>全部</p>
+                    <p class="car-type pd-ct" data-type='1'>电车</p>
+                    <p class="car-type pd-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="singleDatePicker">
+                    <div class="preDateBtn pd-predate">前一天</div>
+                    <div class="showDate">
+                        <input type="text" id="appDateTime1" class="appDateTime" onfocus="this.blur();">
+                        <span class="showWeek1"></span>
+                    </div>
+                    <div class="nextDateBtn pd-nextdate">后一天</div>
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">车牌号</p>
+                        <ul class="fixed-val pd-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header pd-sh">
+                            <p>违法次数</p>
+                            <p>未处理金额</p>
+                            <p>违法分数</p>
+                            <p>已处理</p>
+                            <p>未处理</p>
+                            <p>报警</p>
+                        </div>
+                        <ul class="scroll-val pd-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre pd-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage pd-nowpage">1</span>/<span class="allpage pd-allpage">1</span>
+                    </div>
+                    <div class="page-next pd-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble pd-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-box">
+            <div class="wrap">
+                <div class="cont-title">网点违法详情</div>
+                <div class="carType-box">
+                    <p class="car-type pl-ct active" data-type='0'>全部</p>
+                    <p class="car-type pl-ct" data-type='1'>电车</p>
+                    <p class="car-type pl-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="singleDatePicker">
+                    <div class="preDateBtn pl-predate">前一天</div>
+                    <div class="showDate">
+                        <input type="text" id="appDateTime8" class="appDateTime" onfocus="this.blur();">
+                        <span class="showWeek8"></span>
+                    </div>
+                    <div class="nextDateBtn pl-nextdate">后一天</div>
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box large-fixed">
+                        <p class="fixed-header">网点名称</p>
+                        <ul class="fixed-val pl-fv"></ul>
+                    </div>
+                    <div class="scroll-box small-scroll">
+                        <div class="scroll-header pl-sh">
+                            <p>违法次数</p>
+                            <p>未处理金额</p>
+                            <p>违法分数</p>
+                            <p>已处理</p>
+                            <p>未处理</p>
+                        </div>
+                        <ul class="scroll-val pl-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre pl-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage pl-nowpage">1</span>/<span class="allpage pl-allpage">1</span>
+                    </div>
+                    <div class="page-next pl-nextpage"> > </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-box">
+            <div class="wrap">
+                <div class="cont-title">违法数据统计</div>
+                <div class="carType-box">
+                    <p class="car-type ld-ct active" data-type='0'>全部</p>
+                    <p class="car-type ld-ct" data-type='1'>电车</p>
+                    <p class="car-type ld-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime9" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime10" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val ld-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header ld-sh">
+                            <p>累计已处理</p>
+                            <p>已处理当月产生</p>
+                            <p>已处理月前产生</p>
+                            <p>未处理已匹配用户</p>
+                            <p>未处理已匹配用户未交押金</p>
+                            <p>未处理已匹配运维</p>
+                            <p>未匹配违法</p>
+                            <p>已匹配用户处罚金额</p>
+                            <p>已匹配运维处罚金额</p>
+                            <p>未匹配处罚金额</p>
+                            <p>已匹配用户处罚分数</p>
+                            <p>已匹配运维处罚分数</p>
+                            <p>未匹配处罚分数</p>
+                            <p>未处理违法数</p>
+                            <p>违法增长占比</p>
+                            <p>违法缩减占比</p>
+                        </div>
+                        <ul class="scroll-val ld-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre ld-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage ld-nowpage">1</span>/<span class="allpage ld-allpage">1</span>
+                    </div>
+                    <div class="page-next ld-nextpage"> > </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 推费概述 -->
+        <section class="section-box" section-id="57">
+            <div class="wrap pushMoney">
+                <div class="cont-title">推费概况</div>
+                <div class="carType-box">
+                    <p class="car-type pm-ct active" data-type='0'>全部</p>
+                    <p class="car-type pm-ct" data-type='1'>电车</p>
+                    <p class="car-type pm-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime4" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime5" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val pm-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header pm-sh">
+                            <p>累计未交推费总额</p>
+                            <p>推费总额</p>
+                            <p>推费缴纳</p>
+                            <p>逾期未交</p>
+                            <p>缴纳比例</p>
+                        </div>
+                        <ul class="scroll-val pm-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre pm-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage pm-nowpage">1</span>/<span class="allpage pm-allpage">1</span>
+                    </div>
+                    <div class="page-next pm-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble pm-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src='../js/common/biMonitor.js'></script>
+</body>
+</html>

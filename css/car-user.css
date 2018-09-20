@@ -1,0 +1,90 @@
+/**
+ * Recode: zhangfs by Atom - 2018/04/19
+ * Note: old: 900 lines; recode: 93 lines;
+ */
+.echarts {
+    height: 6rem;
+}
+#odUserRateChart {
+    height: 7rem;
+}
+.twoGroups {
+    width: 3.75rem;
+}
+.twoGroups .set {
+    width: 50%;
+}
+.funnelDate {
+    position: absolute;
+    top: 2.7rem;
+    left: 6rem;
+    width: 1rem;
+    z-index: 200;
+}
+.funnelDate .per {
+    width: 100%;
+    height: .85rem;
+    line-height: .85rem;
+    font-size: .25rem;
+    color: #0F0F0F;
+    z-index: 201;
+}
+.itemVal li p span {
+    float: initial;
+    text-align: center;
+}
+
+/* user register analysis */
+.regist p:nth-child(1), .registVal li p:nth-child(1) { width: 18% }
+.regist p:nth-child(4), .registVal li p:nth-child { width: 22% }
+
+/* double license user analysic */
+.lic-sh, .lic-sv { width: 20.5rem; }
+.lic-sh p, .lic-sv li p { width: 14%; }
+.lic-sh p:nth-child(2), .lic-sv li p:nth-child(2) { width: 15%; }
+.lic-sh p:nth-child(5), .lic-sv li p:nth-child(5) { width: 15%; }
+
+/* valid user analysic */
+.cu-sh, .cu-sv { width: 22rem; }
+.cu-sh p, .cu-sv li p { width: 15%; }
+.cu-sh p:nth-child(1), .cu-sv li p:nth-child(1) { width: 14%; }
+.cu-sh p:nth-child(4), .cu-sv li p:nth-child(4) { width: 14%; }
+.cu-sh p:nth-child(5), .cu-sv li p:nth-child(5) { width: 12%; }
+
+/* purchase user analysic */
+.purc-sh, .purc-sv { width: 14rem; }
+.purc-sh p, .purc-sv li p { width: 16%; }
+.purc-sh p:nth-child(3), .purc-sv li p:nth-child(3) { width: 15%; }
+.purc-sh p:nth-child(4), .purc-sv li p:nth-child(4) { width: 17%; }
+.purc-sh p:nth-child(6), .purc-sv li p:nth-child(6) { width: 20%; }
+
+/* order user analysic */
+.ou-sh, .ou-sv { width: 24rem; }
+.ou-sh p, .ou-sv li p { width: 10%; }
+.ou-sh p:nth-child(1), .ou-sv li p:nth-child(1) { width: 12%; }
+.ou-sh p:nth-child(2), .ou-sv li p:nth-child(2) { width: 13%; }
+.ou-sh p:nth-child(3), .ou-sv li p:nth-child(3) { width: 8%; }
+.ou-sh p:nth-child(5), .ou-sv li p:nth-child(5) { width: 8%; }
+.ou-sh p:nth-child(6), .ou-sv li p:nth-child(6) { width: 14%; }
+.ou-sh p:nth-child(9), .ou-sv li p:nth-child(9) { width: 12%; }
+
+/* first order user analysic */
+.fo-sh, .fo-sv { width: 10rem; }
+.fo-sh p:nth-child(1), .fo-sv li p:nth-child(1) { width: 24%; }
+.fo-sh p:nth-child(2), .fo-sv li p:nth-child(2) { width: 28%; }
+.fo-sh p:nth-child(3), .fo-sv li p:nth-child(3) { width: 21%; }
+.fo-sh p:nth-child(4), .fo-sv li p:nth-child(4) { width: 26%; }
+
+/* user stay analysic */
+.uStay-sh, .uStay-sv { width: 17rem; }
+.uStay-sh p, .uStay-sv li p { width: 17%; }
+.uStay-sh p:nth-child(1), .uStay-sv li p:nth-child(1) { width: 14%; }
+.uStay-sh p:nth-child(3), .uStay-sv li p:nth-child(3) { width: 15%; }
+.uStay-sh p:nth-child(5), .uStay-sv li p:nth-child(5) { width: 20%; }
+
+/* user recall analysic */
+.rc-sh, .rc-sv { width: 11rem; }
+.rc-sh p:nth-child(1), .rc-sv li p:nth-child(1) { width: 22%; }
+.rc-sh p:nth-child(2), .rc-sv li p:nth-child(2) { width: 27%; }
+.rc-sh p:nth-child(3), .rc-sv li p:nth-child(3) { width: 28%; }
+.rc-sh p:nth-child(4), .rc-sv li p:nth-child(4) { width: 23%; }

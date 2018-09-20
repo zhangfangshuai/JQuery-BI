@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="flexible" content="initial-dpr=2,maximum-dpr=3,user-scalable=no" />
+    <title>驾驶舱-用户</title>
+    <script src="../libs/flexible.js"></script>
+    <link rel="stylesheet" href="../css/mobiscroll.custom-2.5.2.min_my.css"/>
+    <link rel="stylesheet" href="../css/LArea.css">
+    <link rel="stylesheet" type="text/css" href="../css/service.css">
+    <link rel="stylesheet" type="text/css" href="../css/car-user.css">
+    <script src="../libs/jquery-3.1.1.min.js"></script>
+    <script src="../js/common/config.js"></script>
+    <script src="../js/common/configEnv.js"></script>
+    <script src="../libs/mobiscroll.custom-2.5.2.min.js"></script>
+    <script src="../libs/LArea.js"></script>
+    <script src="../libs/echarts.min.js"></script>
+    <script src="../js/car-user/userOption.js"></script>
+</head>
+<body>
+    <div class="box">
+        <!-- 导航栏 -->
+        <header class="header clearfix">
+            <div class="slideBtn"></div>
+            <div class="logo"></div>
+            <div class="location">
+                <div class="content-block showCity">
+                    <input id="demo3" readonly="" onfocus="this.blur();" />
+                    <input id="value3" type="hidden" />
+                </div>
+                <div class="showCityIcon"></div>
+            </div>
+        </header>
+
+        <!-- 用户转化漏斗图 -->
+        <section class="section-box" section-id="15">
+            <div class="wrap user-transform clearTopGap">
+                <div class="cont-title">用户转化
+                    <div class="simpleSelection" style="display: none;">  <!-- 初始化时不展示 -->
+                        <div class="toggleIcon"></div>
+                        <input id="ut" class="selectVal" value="近7日" readonly="" onfocus="this.blur();"/>
+                        <input id="ut-val" type="hidden" />
+                    </div>
+                </div>
+                <div class="twoGroups">
+                    <div class="set ut-set active">累计</div>
+                    <div class="set ut-set">新增</div>
+                </div>
+                <div class="echarts" id="ut-funnel"></div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble ut-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 用户注册分析 -->
+        <section class="section-box" section-id="22">
+            <div class="wrap">
+                <div class="cont-title">注册用户分析</div>
+                <div class="doubleDatePicker">
+                    开始<input id="appDateTime1" class="ddp-1" onfocus="this.blur();">
+                    结束<input id="appDateTime2" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="scroll-cont">
+                    <div class="headLine regist">
+                        <p>日期</p>
+                        <p>累计注册</p>
+                        <p>新增注册</p>
+                        <p>老拉新注册</p>
+                        <p>老拉新占比</p>
+                    </div>
+                    <ul class="itemVal registVal"></ul>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre regist-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage regist-nowpage">1</span>/<span class="allpage regist-allpage">1</span>
+                    </div>
+                    <div class="page-next regist-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble regist-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 双证用户分析 -->
+        <section class="section-box" section-id="24">
+            <div class="wrap">
+                <div class="cont-title">双证用户分析</div>
+                <div class="doubleDatePicker">
+                    开始<input id="appDateTime3" class="ddp-1" onfocus="this.blur();">
+                    结束<input id="appDateTime4" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val lic-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header lic-sh">
+                            <p>累计双证绑定数</p>
+                            <p>累计身份证绑定数</p>
+                            <p>累计驾照绑定数</p>
+                            <p>新增双证绑定数</p>
+                            <p>新增身份证绑定数</p>
+                            <p>新增驾照绑定数</p>
+                            <p>双证用户转化率</p>
+                        </div>
+                        <ul class="scroll-val lic-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre ulic-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage ulic-nowpage">1</span>/<span class="allpage ulic-allpage">1</span>
+                    </div>
+                    <div class="page-next ulic-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble ulic-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 可用车用户分析 -->
+        <section class="section-box" section-id="26">
+            <div class="wrap">
+                <div class="cont-title">可用车用户分析</div>
+                <div class="doubleDatePicker">
+                    开始<input id="appDateTime5" class="ddp-1" onfocus="this.blur();">
+                    结束<input id="appDateTime6" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val cu-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header cu-sh">
+                            <p>累计可用车用户</p>
+                            <p>累计基础押金用户</p>
+                            <p>累计芝麻信用用户</p>
+                            <p>新增可用车用户</p>
+                            <p>新增押金用户</p>
+                            <p>新增芝麻信用用户</p>
+                            <p>可用车用户转化率</p>
+                        </div>
+                        <ul class="scroll-val cu-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre cu-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage cu-nowpage">1</span>/<span class="allpage cu-allpage">1</span>
+                    </div>
+                    <div class="page-next cu-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble cu-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 下单用户分析 -->
+        <section class="section-box" section-id="27">
+            <div class="wrap">
+                <div class="cont-title">下单用户分析</div>
+                <div class="doubleDatePicker">
+                    开始<input id="appDateTime7" class="ddp-1" onfocus="this.blur();">
+                    结束<input id="appDateTime8" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box">
+                        <p class="fixed-header">日期</p>
+                        <ul class="fixed-val purc-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header purc-sh">
+                            <p>下单用户数</p>
+                            <p>首单用户数</p>
+                            <p>老用户数</p>
+                            <p>首单用户占比</p>
+                            <p>老用户占比</p>
+                            <p>下单用户转化率</p>
+                        </div>
+                        <ul class="scroll-val purc-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre purc-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage purc-nowpage">1</span>/<span class="allpage purc-allpage">1</span>
+                    </div>
+                    <div class="page-next purc-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble purc-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 订单用户占比分析 -->
+        <section class="section-box">
+            <div class="wrap orderUserRate">
+                <div class="cont-title">订单用户占比分析</div>
+                <div class="monthPicker">
+                    <div class="preMonthBtn odUserRate-premonth">上一月</div>
+                    <div class="showMonth">
+                        <input type="text" id="appMonth1" class="appMonth" onfocus="this.blur();">
+                    </div>
+                    <div class="nextMonthBtn odUserRate-nextmonth">下一月</div>
+                </div>
+                <div class="echarts" id="odUserRateChart"></div>
+            </div>
+        </section>
+
+        <!-- 订单用户分析 -->
+        <section class="section-box">
+            <div class="wrap clearTopGap">
+                <div class="hook"></div>
+                <div class="cont-title">订单用户数据分析</div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box inline-scroll">
+                        <p class="fixed-header">城市</p>
+                        <ul class="fixed-val ou-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header ou-sh">
+                            <p>总订单用户数</p>
+                            <p>本月订单用户数</p>
+                            <p>总订单数</p>
+                            <p>首单用户数</p>
+                            <p>老用户数</p>
+                            <p>订单用户下单频率</p>
+                            <p>留存用户数</p>
+                            <p>召回用户数</p>
+                            <p>首单用户占比</p>
+                            <p>老用户占比</p>
+                        </div>
+                        <ul class="scroll-val ou-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre ou-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage ou-nowpage">1</span>/<span class="allpage ou-allpage">1</span>
+                    </div>
+                    <div class="page-next ou-nextpage"> > </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 首单用户分析 -->
+        <section class="section-box" section-id="31">
+            <div class="wrap firstOrder">
+                <div class="cont-title">首单用户分析</div>
+                <div class="monthPicker">
+                    <div class="preMonthBtn fo-premonth">上一月</div>
+                    <div class="showMonth">
+                        <input type="text" id="appMonth2" class="appMonth" onfocus="this.blur();">
+                    </div>
+                    <div class="nextMonthBtn fo-nextmonth">下一月</div>
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box inline-scroll">
+                        <p class="fixed-header">城市</p>
+                        <ul class="fixed-val fo-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header fo-sh">
+                            <p>首单用户数</p>
+                            <p>首单用户订单数</p>
+                            <p>下单频率</p>
+                            <p>首单用户占比</p>
+                        </div>
+                        <ul class="scroll-val fo-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre fo-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage fo-nowpage">1</span>/<span class="allpage fo-allpage">1</span>
+                    </div>
+                    <div class="page-next fo-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble fo-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 留存用户分析 -->
+        <section class="section-box">
+            <div class="wrap userStay">
+                <div class="cont-title">留存用户分析</div>
+                <div class="monthPicker">
+                    <div class="preMonthBtn uStay-premonth">上一月</div>
+                    <div class="showMonth">
+                        <input type="text" id="appMonth3" class="appMonth" onfocus="this.blur();">
+                    </div>
+                    <div class="nextMonthBtn uStay-nextmonth">下一月</div>
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box inline-scroll">
+                        <p class="fixed-header">城市</p>
+                        <ul class="fixed-val uStay-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header uStay-sh">
+                            <p>留存用户数</p>
+                            <p>上月首单用户数</p>
+                            <p>上月老用户数</p>
+                            <p>留存用户下单量</p>
+                            <p>留存用户下单频次</p>
+                            <p>留存用户占比</p>
+                        </div>
+                        <ul class="scroll-val uStay-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre uStay-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage uStay-nowpage">1</span>/<span class="allpage uStay-allpage">1</span>
+                    </div>
+                    <div class="page-next uStay-nextpage"> > </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 召回用户分析 -->
+        <section class="section-box">
+            <div class="wrap recall">
+                <div class="cont-title">召回用户分析</div>
+                <div class="monthPicker">
+                    <div class="preMonthBtn recall-premonth">上一月</div>
+                    <div class="showMonth">
+                        <input type="text" id="appMonth4" class="appMonth" onfocus="this.blur();">
+                    </div>
+                    <div class="nextMonthBtn recall-nextmonth">下一月</div>
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box inline-scroll">
+                        <p class="fixed-header">城市</p>
+                        <ul class="fixed-val rc-fv"></ul>
+                    </div>
+                    <div class="scroll-box">
+                        <div class="scroll-header rc-sh">
+                            <p>召回用户数</p>
+                            <p>召回用户下单数</p>
+                            <p>召回用户下单频次</p>
+                            <p>召回用户占比</p>
+                        </div>
+                        <ul class="scroll-val rc-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre recall-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage recall-nowpage">1</span>/<span class="allpage recall-allpage">1</span>
+                    </div>
+                    <div class="page-next recall-nextpage"> > </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src='../js/common/biMonitor.js'></script>
+</body>
+</html>

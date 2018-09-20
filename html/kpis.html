@@ -1,0 +1,275 @@
+<!-- Recode by zhangfs 2018/04/21; old: 417 lines; -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>驾驶舱-KPI</title>
+    <meta name="flexible" content="initial-dpr=2,maximum-dpr=3,user-scalable=no" />
+    <script src="../libs/flexible.js"></script>
+    <link rel="stylesheet" href="../css/mobiscroll.custom-2.5.2.min_my.css"/>
+    <link rel="stylesheet" href="../css/LArea.css">
+    <link rel="stylesheet" type="text/css" href="../css/service.css">
+    <link rel="stylesheet" type="text/css" href="../css/kpis.css">
+    <script src="../libs/jquery-3.1.1.min.js"></script>
+    <script src="../js/common/config.js"></script>
+    <script src="../js/common/configEnv.js"></script>
+    <script src="../libs/mobiscroll.custom-2.5.2.min.js"></script>
+    <script src="../libs/LArea.js"></script>
+    <script src="../libs/echarts.min.js"></script>
+    <script src='../js/kpis/kpiOption.js'></script>
+</head>
+<body>
+    <div class="box">
+        <!-- 导航栏 -->
+        <header class="header clearfix">
+            <div class="slideBtn"></div>
+            <div class="logo"></div>
+            <div class="location">
+                <div class="content-block showCity">
+                    <input id="demo3" type="text" readonly="" onfocus="this.blur();" />
+                    <input id="value3" type="hidden" />
+                </div>
+                <div class="showCityIcon"></div>
+            </div>
+        </header>
+
+        <!-- 地图概览 有权限控制-->
+        <section class="section-box">
+            <div class="wrap city-map">
+                <div class="echarts" id="stationsMap"></div>
+            </div>
+        </section>
+
+        <!-- 城市概览-->
+        <section class="section-box" section-id="8">
+            <div class="wrap city-overview">
+                <div class="cont-title">城市概览 - <span class="cityName"></span></div>
+                <div class="overview-box">
+                    <div class="overview-line">
+                        <div> <p class="openTime"></p> <p>开城日期</p> </div>
+                        <div> <p class="totleUser"></p> <p>累计注册用户</p> </div>
+                        <div> <p class="validUser"></p> <p>可用车用户</p> </div>
+                    </div>
+                    <div class="overview-line">
+                        <div> <p class="carOnline"></p> <p>运营车辆</p> </div>
+                        <div> <p class="siteRange"></p> <p>场站规模</p> </div>
+                        <div> <p class="orderAvg"></p> <p>车均单</p> </div>
+                    </div>
+                    <div class="overview-line">
+                        <div> <p class="orderNum"></p> <p>订单量</p> </div>
+                        <div> <p class="incomeAvg"></p> <p>车均收现</p> </div>
+                        <div> <p class="dauUsers"></p> <p>DAU人数</p> </div>
+                    </div>
+                    <div id="detailBtn" class="overview-btn">城市详情</div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble city-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+
+        <div id="forOverviewKPI">
+            <!-- 车均收现 -->
+            <section class="section-box">
+                <div class="wrap kpi-odAvg">
+                    <div class="cont-title">当月KPI-车均收现</div>
+                    <div class="carType-box">
+                        <p class="car-type inc-ct active" data-type='1'>全部</p>
+                        <p class="car-type inc-ct" data-type='0'>新电车</p>
+                        <p class="car-type inc-ct" data-type='2'>老电车</p>
+                        <p class="car-type inc-ct" data-type='3'>燃油车</p>
+                    </div>
+                    <div class="headLine">
+                        <p>大区/城市</p>
+                        <p>目标值</p>
+                        <p>当前值</p>
+                        <p>完成度</p>
+                    </div>
+                    <ul class="itemVal incomeVal"></ul>
+                </div>
+            </section>
+
+            <!-- 车均上架时长 -->
+            <section class="section-box">
+                <div class="wrap clearTopGap kpi-shelfrate">
+                    <div class="hook"></div>
+                    <div class="cont-title">当月KPI-车均上架时长</div>
+                    <div class="headLine">
+                        <p>大区/城市</p>
+                        <p>目标值</p>
+                        <p>当前值</p>
+                        <p>完成度</p>
+                    </div>
+                    <ul class="itemVal shelfVal"></ul>
+                </div>
+            </section>
+
+            <!-- 违法处理率 -->
+            <section class="section-box">
+                <div class="wrap kpi-cash">
+                    <div class="cont-title">当月KPI-违法处理率</div>
+                    <div class="headLine">
+                        <p>大区/城市</p>
+                        <p>目标值</p>
+                        <p>当前值</p>
+                        <p>完成度</p>
+                    </div>
+                    <ul class="itemVal lawVal"></ul>
+                </div>
+            </section>
+        </div>
+
+
+        <div id="forCityDetailKPI" style="display: none">
+            <!-- 城市进度图 -->
+            <section class="section-box" section-id="9">
+                <div class="wrap kpi-circle">
+                    <div class="cont-title">当月KPI
+                        <div class="sub-title">
+                            截至<span class="ring-stopdate"></span>
+                        </div>
+                    </div>
+                    <div class="carType-box">
+                        <p class="car-type kpiCircle-ct active" data-type='1'>全部</p>
+                        <p class="car-type kpiCircle-ct" data-type='0'>新电车</p>
+                        <p class="car-type kpiCircle-ct" data-type='2'>老电车</p>
+                        <p class="car-type kpiCircle-ct" data-type='3'>燃油车</p>
+                    </div>
+                    <div class="overview-box">
+                        <div class="circle-line">
+                            <div id="cashCircle"></div>
+                            <div id="sheftCircle"></div>
+                            <div id="lawCircle"></div>
+                        </div>
+                        <div class="circledata-line">
+                            <div> <p class="cash-now"></p> <p class="coavg-text">车均收现</p> </div>
+                            <div> <p class="sheft-now"></p> <p>车均上架时长</p> </div>
+                            <div> <p class="law-now"></p> <p>违法处理率</p> </div>
+                        </div>
+                        <div class="circledata-line">
+                            <div> <p class="cash-goal"></p> <p>目标值</p> </div>
+                            <div> <p class="sheft-goal"></p> <p>目标值</p> </div>
+                            <div> <p class="law-goal"></p> <p>目标值</p> </div>
+                        </div>
+                    </div>
+                    <div class="responsiblePerson-box">
+                        <p class="phoneBubble monKpi-phoneBubble"><a href=""></a></p>
+                        <p class="responsiblePerson"></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <div id="forPublicKPI">
+            <!-- 车辆维度指标 -->
+            <section class="section-box" section-id="10">
+                <div class="wrap target-car">
+                    <div class="cont-title">核心指标-车辆维度指标</div>
+                    <div class="scroll-cont">
+                        <div class="headLine">
+                            <p>核心名称</p>
+                            <p>昨日</p>
+                            <p>前日</p>
+                            <p>同比</p>
+                            <p>同比增幅</p>
+                        </div>
+                        <ul class="itemVal tgCarVal"></ul>
+                    </div>
+                    <div class="responsiblePerson-box">
+                        <p class="phoneBubble tgCar-phoneBubble"><a href=""></a></p>
+                        <p class="responsiblePerson"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 网点维度指标 -->
+            <section class="section-box" section-id="11">
+                <div class="wrap target-site">
+                    <div class="cont-title">核心指标-网点维度指标</div>
+                    <div class="scroll-cont">
+                        <div class="headLine">
+                            <p>核心名称</p>
+                            <p>昨日</p>
+                            <p>前日</p>
+                            <p>同比</p>
+                            <p>同比增幅</p>
+                        </div>
+                        <ul class="itemVal tgSiteVal"></ul>
+                    </div>
+                    <div class="responsiblePerson-box">
+                        <p class="phoneBubble tgSite-phoneBubble"><a href=""></a></p>
+                        <p class="responsiblePerson"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 用户维度指标 -->
+            <section class="section-box" section-id="12">
+                <div class="wrap target-user">
+                    <div class="cont-title">核心指标-用户维度指标</div>
+                    <div class="scroll-cont">
+                        <div class="headLine">
+                            <p>核心名称</p>
+                            <p>昨日</p>
+                            <p>前日</p>
+                            <p>同比</p>
+                            <p>同比增幅</p>
+                        </div>
+                        <ul class="itemVal tgUserVal"></ul>
+                    </div>
+                    <div class="responsiblePerson-box">
+                        <p class="phoneBubble tgUser-phoneBubble"><a href=""></a></p>
+                        <p class="responsiblePerson"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 订单维度指标 -->
+            <section class="section-box" section-id="13">
+                <div class="wrap target-Order">
+                    <div class="cont-title">核心指标-订单维度指标</div>
+                    <div class="scroll-cont">
+                        <div class="headLine">
+                            <p>核心名称</p>
+                            <p>昨日</p>
+                            <p>前日</p>
+                            <p>同比</p>
+                            <p>同比增幅</p>
+                        </div>
+                        <ul class="itemVal tgOrderVal"></ul>
+                    </div>
+                    <div class="responsiblePerson-box">
+                        <p class="phoneBubble tgOrder-phoneBubble"><a href=""></a></p>
+                        <p class="responsiblePerson"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 营收维度指标 -->
+            <section class="section-box" section-id="14">
+                <div class="wrap target-Income">
+                    <div class="cont-title">核心指标-营收维度指标</div>
+                    <div class="scroll-cont">
+                        <div class="headLine">
+                            <p>核心名称</p>
+                            <p>昨日</p>
+                            <p>前日</p>
+                            <p>同比</p>
+                            <p>同比增幅</p>
+                        </div>
+                        <ul class="itemVal tgIncomeVal"></ul>
+                    </div>
+                    <div class="responsiblePerson-box">
+                        <p class="phoneBubble tgIncome-phoneBubble"><a href=""></a></p>
+                        <p class="responsiblePerson"></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src='../js/common/biMonitor.js'></script>
+</body>
+</html>

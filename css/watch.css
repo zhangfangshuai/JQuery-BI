@@ -1,0 +1,124 @@
+/**
+ * Recode: zhangfs by Atom
+ * Date: 2018/04/19 15:25
+ * Note: old version 535 lines;
+ */
+.wrap {
+    margin: 0.8rem auto 0;
+}
+
+.clearTopGap-watch {
+  margin-top: .4rem;
+}
+/* income real icon */
+.income-chart .flag-title {
+    background: -moz-linear-gradient(180deg, #f1d591 10%, #ffa313);
+    background: -ms-linear-gradient(180deg, #f1d591 10%, #ffa313);
+    background: -o-linear-gradient(180deg, #f1d591 10%, #ffa313);
+    background: -webkit-linear-gradient(180deg, #f1d591 10%, #ffa313);
+    background: linear-gradient(180deg, #f1d591 10%, #ffa313);
+}
+.income-chart .flag-title:before {
+    border-right: solid .375rem #ffa313;
+    border-left: solid .375rem #ffa313;
+}
+
+
+/* income real table */
+.ir-sh, .ir-sv { width: 15rem; }
+.ir-sh p, .ir-sv li p { width: 12%; }
+.ir-sh p:nth-child(4), .ir-sv li p:nth-child(4) { width: 14%; }
+.ir-sh p:nth-child(8), .ir-sv li p:nth-child(8) { width: 14%; }
+
+
+
+/* car real icon */
+.car-chart .flag-title {
+    background: -moz-linear-gradient(180deg, #32f9a7 10%, #0db95f);
+    background: -ms-linear-gradient(180deg, #32f9a7 10%, #0db95f);
+    background: -o-linear-gradient(180deg, #32f9a7 10%, #0db95f);
+    background: -webkit-linear-gradient(180deg, #32f9a7 10%, #0db95f);
+    background: linear-gradient(180deg, #32f9a7 10%, #0db95f);
+}
+.car-chart .flag-title:before {
+    border-right: solid .375rem #0db95f;
+    border-left: solid .375rem #0db95f;
+}
+
+/* car real table */
+.cr-sh, .cr-sv { width: 22rem; }
+.cr-sh p, .cr-sv li p { width: 8.3%; }
+.cr-sh p:nth-child(1), .cr-sv li p:nth-child(1) { width: 6%; }
+.cr-sh p:nth-child(2), .cr-sv li p:nth-child(2) { width: 7%; }
+.cr-sh p:nth-child(3), .cr-sv li p:nth-child(3) { width: 11.6%; }
+.cr-sh p:nth-child(4), .cr-sv li p:nth-child(4) { width: 11.6%; }
+.cr-sh p:nth-child(5), .cr-sv li p:nth-child(5) { width: 7%; }
+.cr-sh p:nth-child(6), .cr-sv li p:nth-child(6) { width: 7%; }
+
+/* car online & offline */
+.car-chart .simpleSelection {
+    top: 1.1rem;
+    right: .8rem;
+}
+.car-chart .simpleSelection input {
+    float: right;
+    margin-right: 20%;
+}
+
+.noteLine p {
+    text-align: left;
+}
+
+
+/* order real icon */
+.order-chart .flag-title {
+    background: -moz-linear-gradient(180deg, #59ffd1 10%, #01c6b6);
+    background: -ms-linear-gradient(180deg, #59ffd1 10%, #01c6b6);
+    background: -o-linear-gradient(180deg, #59ffd1 10%, #01c6b6);
+    background: -webkit-linear-gradient(180deg, #59ffd1 10%, #01c6b6);
+    background: linear-gradient(180deg, #59ffd1 10%, #01c6b6);
+}
+.order-chart .flag-title:before {
+    border-right: solid .375rem #01c6b6;
+    border-left: solid .375rem #01c6b6;
+}
+
+/* order real table */
+.or-sh, .or-sv { width: 17.5rem; }
+.or-sh p, .or-sv li p { width: 11%; }
+.or-sh p:nth-child(2), .or-sv li p:nth-child(2) { width: 14%; }
+.or-sh p:nth-child(3), .or-sv li p:nth-child(3) { width: 14%; }
+.or-sh p:nth-child(4), .or-sv li p:nth-child(4) { width: 8%; }
+.or-sh p:nth-child(7), .or-sv li p:nth-child(7) { width: 9%; }
+
+
+/* new guy real icon */
+.newguy-chart .flag-title {
+    background: -moz-linear-gradient(200deg, #81d4ff 10%, #a28fff);
+    background: -ms-linear-gradient(200deg, #81d4ff 10%, #a28fff);
+    background: -o-linear-gradient(200deg, #81d4ff 10%, #a28fff);
+    background: -webkit-linear-gradient(200deg, #81d4ff 10%, #a28fff);
+    background: linear-gradient(200deg, #81d4ff 10%, #a28fff);
+}
+.newguy-chart .flag-title:before {
+    border-right: solid .375rem #a28fff;
+    border-left: solid .375rem #a28fff;
+}
+/* new guy real table */
+.ng-sh, .ng-sv { width: 13rem; }
+.ng-sh p, .ng-sv li p { width: 19.75%; }
+.ng-sh p:nth-child(3), .ng-sv li p:nth-child(3) { width: 21%; }
+
+
+/* car battery icon */
+.car-battery .flag-title {
+    background: -moz-linear-gradient(200deg, #aee769 10%, #4ab90d);
+    background: -ms-linear-gradient(200deg, #aee769 10%, #4ab90d);
+    background: -o-linear-gradient(200deg, #aee769 10%, #4ab90d);
+    background: -webkit-linear-gradient(200deg, #aee769 10%, #4ab90d);
+    background: linear-gradient(200deg, #aee769 10%, #4ab90d);
+}
+.car-battery .flag-title:before {
+    border-right: solid .375rem #4ab90d;
+    border-left: solid .375rem #4ab90d;
+}

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>驾驶舱-网点</title>
+    <meta name="flexible" content="initial-dpr=2,maximum-dpr=3,user-scalable=no" />
+    <script src="../libs/flexible.js"></script>
+    <link rel="stylesheet" href="../css/mobiscroll.custom-2.5.2.min_my.css"/>
+    <link rel="stylesheet" href="../css/LArea.css">
+    <link rel="stylesheet" type="text/css" href="../css/service.css">
+    <link rel="stylesheet" type="text/css" href="../css/site.css">
+    <script src="../libs/jquery-3.1.1.min.js"></script>
+    <script src="../js/common/config.js"></script>
+    <script src="../js/common/configEnv.js"></script>
+    <script src="../libs/mobiscroll.custom-2.5.2.min.js"></script>
+    <script src="../libs/LArea.js"></script>
+    <script src="../libs/echarts.min.js"></script>
+    <script src="../js/site/siteOption.js"></script>
+</head>
+<body>
+    <div class="box">
+        <!-- 导航栏 -->
+        <header class="header clearfix">
+            <div class="slideBtn"></div>
+            <div class="logo"></div>
+            <div class="location">
+                <div class="content-block showCity">
+                    <input id="demo3" type="text" readonly="" onfocus="this.blur();" />
+                    <input id="value3" type="hidden" />
+                </div>
+                <div class="showCityIcon"></div>
+            </div>
+        </header>
+
+        <!-- 网点概况 -->
+        <section class="section-box" section-id="34">
+            <div class="wrap clearTopGap">
+                <div class="cont-title">网点概况</div>
+                <div class="headLine site">
+                    <p>指标名称</p>
+                    <p>昨日</p>
+                    <p>前日</p>
+                    <p>同比</p>
+                    <p>同比增幅</p>
+                </div>
+                <div class="itemVal siteVal"></div>
+                <div class="pagenation">
+                    <div class="page-pre site-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage site-nowpage">1</span>/<span class="allpage site-allpage">1</span>
+                    </div>
+                    <div class="page-next site-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble site-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 网点变更-->
+        <section class="section-box" section-id="35">
+            <div class="wrap">
+                <div class="cont-title">网点变更</div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime1" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime2" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="headLine schange">
+                    <p>网点名称</p>
+                    <p>网点类型</p>
+                    <p>车位数</p>
+                    <p>变更</p>
+                    <p>变更日期</p>
+                </div>
+                <div class="itemVal changeVal"></div>
+                <div class="pagenation">
+                    <div class="page-pre change-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage change-nowpage">1</span>/<span class="allpage change-allpage">1</span>
+                    </div>
+                    <div class="page-next change-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble change-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 网点明细 -->
+        <section class="section-box" section-id="36">
+            <div class="wrap">
+                <div class="cont-title">网点明细</div>
+                <div class="threeColumnSelection">
+                    <div class="tcs col-1 active" data-value="1">20佳</div>
+                    <div class="tcs col-2" data-value="2">20差</div>
+                    <div class="tcs col-3" data-value="3">全部</div>
+                </div>
+                <div class="multiSelection">
+                    <div class="selection-box clearLeftGap">
+                        <input id="detail-business" readonly="" onfocus="this.blur();" value="商圈" />
+                        <input id="detail-business-val" type="hidden" />
+                    </div>
+                    <div class="selection-box">
+                        <input id="detail-date" readonly="" onfocus="this.blur();" value="近7日"/>
+                        <input id="detail-date-val" type="hidden" />
+                    </div>
+                    <div class="selection-box">
+                        <input id="detail-site" readonly="" onfocus="this.blur();" value="全部"/>
+                        <input id="detail-site-val" type="hidden" />
+                    </div>
+                </div>
+                <div class="divided-scroll-cont">
+                    <!-- large-fixed类与small-scroll类配套使用，需要在js动态添加值部分增加span标签 -->
+                    <!-- 如果不想使用large-fixed类但还是想有内容滚动效果，则使用inline-scroll类, 同样要加span标签但不用small-scroll配套 -->
+                    <div class="fixed-box large-fixed">
+                        <p class="fixed-header">网点名称</p>
+                        <ul class="fixed-val sd-fv"></ul>
+                    </div>
+                    <div class="scroll-box small-scroll">
+                        <div class="scroll-header sd-sh">
+                            <p>车位数</p>
+                            <p>车位均单</p>
+                            <p>日均取车均单</p>
+                            <p>日均还车均单</p>
+                            <p>日均服务用户</p>
+                            <p>开启日期</p>
+                        </div>
+                        <ul class="scroll-val sd-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre detail-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage detail-nowpage">1</span>/<span class="allpage detail-allpage">1</span>
+                    </div>
+                    <div class="page-next detail-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble detail-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 网点车辆 -->
+        <section class="section-box" section-id="38">
+            <div class="wrap">
+                <div class="cont-title">网点车辆</div>
+                <div class="singleDatePicker">
+                    <div class="preDateBtn sitecar-predate">前一天</div>
+                    <div class="showDate">
+                        <input id="appDateTime6" class="appDateTime" onfocus="this.blur();">
+                        <span class="showWeek6"></span>
+                    </div>
+                    <div class="nextDateBtn sitecar-nextdate">后一天</div>
+                </div>
+                <div class="multiSelection">
+                    <div class="selection-box clearLeftGap">
+                        <input id="car-business" readonly="" onfocus="this.blur();" value="商圈" />
+                        <input id="car-business-val" type="hidden" />
+                    </div>
+                    <div class="selection-box">
+                        <input id="car-time" readonly="" onfocus="this.blur();" value="时刻"/>
+                        <input id="car-time-val" type="hidden" />
+                    </div>
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box large-fixed">
+                        <p class="fixed-header">网点名称</p>
+                        <ul class="fixed-val sc-fv"></ul>
+                    </div>
+                    <div class="scroll-box small-scroll">
+                        <div class="scroll-header sc-sh">
+                            <p>网点类型</p>
+                            <p>车位总数</p>
+                            <p>已用车位数</p>
+                            <p>订单占用</p>
+                            <p>待租车辆</p>
+                            <p>低电下架</p>
+                            <p>其他原因</p>
+                            <p>电量不足80%</p>
+                        </div>
+                        <ul class="scroll-val sc-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre sitecar-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage sitecar-nowpage">1</span>/<span class="allpage sitecar-allpage">1</span>
+                    </div>
+                    <div class="page-next sitecar-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble sitecar-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 网点订单 -->
+        <section class="section-box" section-id='39'>
+            <div class="wrap">
+                <div class="cont-title">网点订单</div>
+                <div class="carType-box">
+                    <p class="car-type so-ct active" data-type='0'>全部</p>
+                    <p class="car-type so-ct" data-type='1'>电车</p>
+                    <p class="car-type so-ct" data-type='2'>燃油车</p>
+                </div>
+                <div class="doubleDatePicker">
+                    开始<input type="text" id="appDateTime7" class="ddp-1" onfocus="this.blur();">
+                    结束<input type="text" id="appDateTime8" class="ddp-2" onfocus="this.blur();">
+                </div>
+                <div class="divided-scroll-cont">
+                    <div class="fixed-box large-fixed">
+                        <p class="fixed-header">网点名称</p>
+                        <ul class="fixed-val so-fv"></ul>
+                    </div>
+                    <div class="scroll-box small-scroll">
+                        <div class="scroll-header so-sh">
+                            <p>运营开通时间</p>
+                            <p>网点状态</p>
+                            <p>车位数</p>
+                            <p>下单量</p>
+                            <p>取车单</p>
+                            <p>订单执行率</p>
+                            <p>当日完成单</p>
+                            <p>当日还车单</p>
+                            <p>异地还车单</p>
+                            <p>单均里程</p>
+                            <p>单均时长</p>
+                            <p>单均收现</p>
+                            <p>总流水</p>
+                            <p>总收现</p>
+                            <p>取车车位均单</p>
+                            <p>还车车位均单</p>
+                            <p>异地还车率</p>
+                        </div>
+                        <ul class="scroll-val so-sv"></ul>
+                    </div>
+                </div>
+                <div class="pagenation">
+                    <div class="page-pre so-prepage"> < </div>
+                    <div class="pages">
+                        <span class="nowpage so-nowpage">1</span>/<span class="allpage so-allpage">1</span>
+                    </div>
+                    <div class="page-next so-nextpage"> > </div>
+                </div>
+                <div class="responsiblePerson-box">
+                    <p class="phoneBubble so-phoneBubble"><a href=""></a></p>
+                    <p class="responsiblePerson"></p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src='../js/common/biMonitor.js'></script>
+</body>
+</html>

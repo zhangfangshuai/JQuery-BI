@@ -25,8 +25,6 @@ $(document).ready(function () {
     [1,2].map(function(i) {
         triggerLArea(`#appCar${i}`, `#value3`, APP.carType);
     });
-    // 实时车辆上下架情况
-    // triggerLArea(`#appCarState`, `#value3`, APP.carOperateBar2);
 
 
 
@@ -42,16 +40,17 @@ $(document).ready(function () {
 
     // switch cities
     $('#demo3').bind('input propertychange', function() {
-        if ($('#value3').val()=='') return
-        city = $('#value3').val();
-        localStorage.sessionCity = JSON.stringify({ 'text':$('#demo3').val(), 'value':$('#value3').val() });
-        $('.phoneBubble').hide('fast');
+        let newCity = $('#value3').val();
+        console.log(city == newCity);
+        if ((newCity == '') || (city == newCity)) return
+        city = newCity;
+        localStorage.sessionCity = JSON.stringify({ 'text':$('#demo3').val(), 'value':newCity });
+        resetMobileSelect();  // 重置 mobileselect
         Dashboard();
         Employee();
         realListening();
         getCityData();
         userAnalysis();
-        // getPrincipal(city, [71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93]);
     });
 
     function realListening () {
@@ -105,7 +104,7 @@ $(document).ready(function () {
                 }
             });
             $('#dashboard').html(boards);
-            setTimeout(hideLoading, 1000);
+            setTimeout(hideLoading, 700);
         })
     };
 
@@ -347,8 +346,6 @@ $(document).ready(function () {
     /**
      * 资产分析
      */
-    // let ACR = echarts.init(document.getElementById("assetcars"));
-    // ACR.showLoading();
     let ASR = echarts.init(document.getElementById("assetsites"));
     ASR.showLoading();
     let APR = echarts.init(document.getElementById("assetparks"));
@@ -383,10 +380,9 @@ $(document).ready(function () {
             let carall = parseInt($('#carall').attr('data-val')),
                 caron = parseInt($('#caron').attr('data-val')),
                 carback = parseInt($('#carback').attr('data-val'));
-            let topPart = (carall - carback) / carall,
-                midPart = (carback - caron) / carall,
-                bootPart = caron / carall;
-            console.log(topPart, midPart, bootPart);
+            let topPart = ((carall - carback) / carall).toFixed(3),
+                midPart = ((carback - caron) / carall).toFixed(3),
+                bootPart = (caron / carall).toFixed(3);
             let h_base = $('#assetcars').height();
             let $assp = $('#assetcars').find('p')
             $assp.eq(0).css({"height": `calc(100% * ${topPart})`})
@@ -594,7 +590,6 @@ $(document).ready(function () {
             WGCAC.setOption(weekLineOption);
             WGCAC.hideLoading();
         });
-        // hideLoading()
         weekOnline();
     }
     // 车均上架时长
@@ -630,7 +625,7 @@ $(document).ready(function () {
             for (let i = 1; i <= 7; i++) {
                 let date = getDaysOffset(-i);
                 let u = `<li> <p>${date}</p>`;
-                res.data.map(function(d) { u += `<p>${d[date]}</p>` });
+                res.data.map(function(d,i) { u += `<p>${commaFormat(d[date])}</p>` });
                 u += `</li>`;
                 users.push(u)
             }
@@ -679,16 +674,17 @@ $(document).ready(function () {
         // 允许用户误操作范围阈值
         if (Math.abs(dir) < 5) return;
         let $secgo = $('section:visible').eq(GO);
-        if (dir > 0) {        // 用户上滑,切换下一页
-            if (pos < startPos) {
+        if (dir > 0) {        // 用户上滑,切换下一页, startPos<0页面位置异常
+            if (pos < startPos || startPos < 0) {
                 GO >= len-1 ? (GO = len - 1) : rollGear(++GO);
             }
         } else if (dir < 0) {       // 用户下滑,切换上一页
-            if (pos > startPos) {
+            if (pos > startPos || startPos < 0) {
                 GO <= 0 ? (GO = 0) : rollGear(--GO);
             }
         }
         console.log(`\n--交互信息--\n当前模块: ${GO}\n滑动距离: ${dir}\n模块滑动前距顶: ${startPos}\n模块滑动后距顶: ${endPos}\n滑动过程最终距顶: ${endMovePos}`);
+
     }
     // 缓动对齐
     function rollGear(go) {
@@ -720,14 +716,13 @@ $(document).ready(function () {
                 console.log(`警告: 车辆类型过滤器"${who}"还未被配置!`);
         }
     });
-    // for appSelect
+    // for 车辆现况
     let mobileSelect = new MobileSelect({
         trigger: "#appSelect",
         title: '',
         wheels: APP.appSelect,
         position: [0,0],
         callback:function(indexArr, data){
-            console.log(indexArr, data);
             if (car_ct == indexArr[0]) {
                 if (carr_operate != indexArr[1]) {
                     carr_operate = indexArr[1];
@@ -740,6 +735,12 @@ $(document).ready(function () {
             }
         }
     });
+    function resetMobileSelect() {
+        mobileSelect.locatePosition(0,0);
+        mobileSelect.locatePosition(1,0);
+        car_ct = 0;
+        carr_operate = 0;
+    }
 
     $('.appMonth').on('change', function() {
           $(this).val(fmt($(this).val()));

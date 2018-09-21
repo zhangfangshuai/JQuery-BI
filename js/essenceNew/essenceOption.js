@@ -115,7 +115,7 @@ var realCashOption = {
     color: colors,
     textStyle: { color:'#647888', fontSize:fontSize },
     tooltip: { trigger: 'axis', textStyle: { fontSize: fontSize, fontWeight: 'bold' } },
-    grid: { left:'3%', right:'5%', top:'15%', bottom:'15%', containLabel: true  },
+    grid: { left:'3%', right:'5%', top:'15%', bottom:'8%', containLabel: true  },
     legend: { left: 'center', top: '1%', itemGap: 10,
         textStyle: { fontSize: fontSize },
         itemWidth: legendItemWidth,
@@ -163,7 +163,7 @@ var realCarOption = {
             return (p[0].name + ret.join(''));
         }
     },
-    grid: { left:'3%', right:'5%', top:'15%', bottom:'15%', containLabel: true  },
+    grid: { left:'3%', right:'5%', top:'15%', bottom:'8%', containLabel: true  },
     legend: { left: 'center', top: '1%', itemGap: 10,
         textStyle: { fontSize: fontSize },
         itemWidth: legendItemWidth,
@@ -187,7 +187,7 @@ var optionOn = {
     color: colors,
     textStyle: { color: '#647888', fontSize: fontSize },
     tooltip : { trigger: 'axis', textStyle: { fontSize: fontSize } },
-    grid: { left:'3%', right:'5%', top:'15%', bottom:'15%', containLabel: true  },
+    grid: { left:'3%', right:'5%', top:'15%', bottom:'8%', containLabel: true  },
     legend: { left: 'center', top: '1%',
         textStyle: { fontSize: fontSize },
         itemWidth: legendItemWidth,
@@ -213,7 +213,7 @@ var optionDown = {
     color: colors,
     textStyle: { color:'#647888', fontSize: fontSize },
     tooltip: { trigger: 'axis', textStyle: { fontSize: fontSize } },
-    grid: { left:'3%', right:'5%', top:'30%', bottom:'10%', containLabel: true },
+    grid: { left:'3%', right:'5%', top:'30%', bottom:'8%', containLabel: true },
     legend: [{
         left: 'center',
         top: '1%',
@@ -314,7 +314,7 @@ var realOrderOption = {
     lineStyle: { width:20, color:'red' },
     textStyle: { color:'#647888', fontSize:fontSize },
     tooltip: { trigger: 'axis', textStyle: { fontSize: fontSize } },
-    grid: { left:'3%', right:'5%', top:'15%', bottom:'15%', containLabel: true },
+    grid: { left:'3%', right:'5%', top:'15%', bottom:'8%', containLabel: true },
     legend: { left: 'center', top: '1%',
         textStyle: { fontSize: fontSize, color:'#647888' },
         itemWidth: legendItemWidth,
@@ -339,7 +339,7 @@ var realNewUserOption = {
     color: colors,
     textStyle: { color:'#647888', fontSize:fontSize },
     tooltip: { trigger: 'axis', textStyle: { fontSize: fontSize } },
-    grid: { left:'3%', right:'5%', top:'20%', bottom:'15%', containLabel: true },
+    grid: { left:'3%', right:'5%', top:'20%', bottom:'8%', containLabel: true },
     legend: [{ left: 'center', top: '1%',
         textStyle: { fontSize: fontSize},
         itemWidth: legendItemWidth,
@@ -444,13 +444,13 @@ var gaugeOption = {
 
 // 周对比视图折线图
 var weekLineOption = {
-    title: { text: '', left:'3%', textStyle: {fontSize: 14, color: '#6034FF'} },
+    title: { text:'', left:'3%', textStyle: {fontSize: 14, color: '#6034FF'} },
     color: [],
     tooltip: { trigger: 'axis', axisPointer: {type:'line'}, textStyle: {fontSize:fontSize} },
     textStyle: { color:'#647888', fontSize: fontSize },
     grid: { top:'20%', left: '3%', right: '5%', bottom: '10%', containLabel:true },
     legend: {
-        top: '1%',
+        top:'1%',
         itemGap: 20,
         data:['本周', '上周']
     },
@@ -484,7 +484,7 @@ var weekLineOption = {
 
 // 周对比视图柱状图
 var weekBarOption = {
-    title: { text: '', left:'3%', textStyle: {fontSize: 14, color: '#6034FF'} },
+    title: { text:'', left:'3%', textStyle: {fontSize: 14, color: '#6034FF'} },
     color: [],
     tooltip: { trigger: 'axis', axisPointer: {type:'shadow'}, textStyle: {fontSize:fontSize} },
     textStyle: { color:'#647888', fontSize:fontSize },
@@ -570,7 +570,7 @@ var funnelOption = {
                     }
                 },
                 emphasis: {
-                    textStyle: { fontSize:fontSize, color:'#f94343' }
+                    textStyle: { fontSize:fontSize + 1, color:'#f94343' }
                 }
             },
             data: []

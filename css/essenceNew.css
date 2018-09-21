@@ -223,6 +223,11 @@ li p img {
     padding-top: 1.5rem;
     overflow: scroll;
 }
+.container >p {
+    padding: 0 .5rem;
+    color: #818B94;
+    font-size: .32rem;
+}
 #dashboard .dasherror {
     color: #141ec3;
     text-align: center;
@@ -587,18 +592,17 @@ li p img {
 }
 .userRetain p, #userRetain li p {
     width: 25%;
-    /*text-align: center;*/
 }
 
 #assetcars {
     position: relative;
-    width: 3rem;
-    height: 3rem;
-    /*border: .7rem solid #818B94;*/
+    width: 2.9rem;
+    height: 2.9rem;
     border-radius: 50%;
     background: #cbcce0;
     overflow: hidden;
     padding-left: initial;
+    margin-left: 7%;
 }
 #assetcars p {
     width: 100%;

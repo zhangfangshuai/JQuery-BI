@@ -624,7 +624,7 @@ $(document).ready(function () {
             let users = new Array();
             for (let i = 1; i <= 7; i++) {
                 let date = getDaysOffset(-i);
-                let u = `<li> <p>${date}</p>`;
+                let u = `<li> <p>${fmt(date)}</p>`;
                 res.data.map(function(d,i) { u += `<p>${commaFormat(d[date])}</p>` });
                 u += `</li>`;
                 users.push(u)
@@ -637,7 +637,7 @@ $(document).ready(function () {
             let users = new Array();
             for (let i = 1; i<= 7; i++) {
                 let date = getDaysOffset(-i);
-                let u = `<li> <p>${date}</p>`;
+                let u = `<li> <p>${fmt(date)}</p>`;
                 res.data.map(function(d) { u += `<p>${d[date]}</p>` });
                 u += `</li>`;
                 users.push(u)
